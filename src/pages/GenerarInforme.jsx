@@ -2,6 +2,7 @@ import { Titulo } from "../Components/Titulo";
 import Swal from "sweetalert2";
 import { saveAs } from "file-saver";
 import { PDFDocument, rgb } from "pdf-lib";
+import imagen from '../assets/logoufps.jpg';
 
 function GenerarInforme() {
   const generaInforme = async () => {
@@ -22,13 +23,13 @@ function GenerarInforme() {
       console.log("Data received:", data);
 
       // Fetch the image from the public folder
-      const imageResponse = await fetch("../src/assets/logoufps.jpg");
+      //const imageResponse = await fetch("../src/assets/logoufps.jpg");
 
-      if (!imageResponse.ok) {
-        throw new Error('Error fetching the image');
-      }
+      //if (!imageResponse.ok) {
+        //throw new Error('Error fetching the image');
+      //}
 
-      const imageBytes = await imageResponse.arrayBuffer();
+      //const imageBytes = await imageResponse.arrayBuffer();
 
       // Create the PDF document
       const pdfDoc = await PDFDocument.create();
@@ -37,7 +38,7 @@ function GenerarInforme() {
       const fontSize = 18;
 
       // Embed the JPEG image
-      const image = await pdfDoc.embedJpg(imageBytes);
+      const image = imagen;
 
       // Scale the image
       const scale = 0.3;

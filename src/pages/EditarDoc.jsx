@@ -233,7 +233,7 @@ export default function editarDocumento() {
                 <input
                   value={input1}
                   onChange={handleChange1}
-                  required
+                  
                   type="text"
                   name="nombre"
                   className="w-60 md:w-80 h-full bg-white outline-none border border-slate-400 rounded-md p-1 pl-5 pr-9 text-gray-900"
@@ -244,7 +244,7 @@ export default function editarDocumento() {
               <p className="text-lg md:w-[30%]">Semestre:</p>
               <div className="flex flex-col">
                 <input
-                  required
+                  
                   type="text"
                   name="semestre"
                   value={inputValue}
@@ -265,7 +265,7 @@ export default function editarDocumento() {
               <p className="text-lg md:w-[30%]">Tipo de documento:</p>
               <div>
                 <select
-                  required
+                  
                   name="tipodocumento"
                   className="w-60 md:w-80 h-full bg-white outline-none border border-slate-400 rounded-md p-2 pl-5 pr-9 text-gray-500"
                 >
@@ -284,7 +284,7 @@ export default function editarDocumento() {
                 <textarea
                   value={input3}
                   onChange={handleChange3}
-                  required
+                  
                   name="descripcion"
                   className="w-60 md:w-80 h-40 bg-white outline-none border border-slate-400 rounded-md p-2 pl-5 pr-9 text-gray-900"
                 ></textarea>
@@ -296,7 +296,7 @@ export default function editarDocumento() {
                 <textarea
                   value={input4}
                   onChange={handleChange4}
-                  required
+                  
                   type="text"
                   name="miembros"
                   className="resize-none w-60 md:w-80 border border-slate-400 rounded-md h-20 pl-2 pr-2 text-sm pt-2"

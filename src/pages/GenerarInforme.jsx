@@ -39,7 +39,7 @@ function GenerarInforme() {
 
       // Embed the JPEG image
       const image = await pdfDoc.embedJpg(imagen);
-
+      console.log(imagen)
       // Scale the image
       const scale = 0.3;
       const imageWidth = image.width * scale;

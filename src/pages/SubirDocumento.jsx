@@ -340,20 +340,7 @@ export default function SubirDocumento() {
           >
             Autenticar con Google
           </button>
-          {fileLinks.length > 0 && (
-            <div className="mt-6">
-              <h3 className="text-lg font-semibold">Enlaces de Archivos:</h3>
-              <ul>
-                {fileLinks.map((link, index) => (
-                  <li key={index}>
-                    <a href={link} target="_blank" rel="noopener noreferrer">
-                      {link}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
+          
         </div>
       </div>
     </GoogleOAuthProvider>

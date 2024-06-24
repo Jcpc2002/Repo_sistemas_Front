@@ -56,27 +56,27 @@ function GenerarInforme() {
       //   height: imageHeight,
       // });
 
-      let textYPosition = yPosition - 2 * fontSize;
+      //let textYPosition = yPosition - 2 * fontSize;
 
       // Function to add a new page when necessary
-      const addNewPage = () => {
-        page = pdfDoc.addPage();
-        textYPosition = height - fontSize;
-      };
+      // const addNewPage = () => {
+      //   page = pdfDoc.addPage();
+      //   textYPosition = height - fontSize;
+      // };
 
-      // Add text to the page and check if a new page is needed
-      const addText = (text, size = fontSize, lineSpacing = 12) => {
-        if (textYPosition < size * 2) {
-          addNewPage();
-        }
-        page.drawText(text, {
-          x: 50,
-          y: textYPosition,
-          size: size,
-          color: rgb(0, 0, 0),
-        });
-        textYPosition -= size + lineSpacing;
-      };
+      // // Add text to the page and check if a new page is needed
+      // const addText = (text, size = fontSize, lineSpacing = 12) => {
+      //   if (textYPosition < size * 2) {
+      //     addNewPage();
+      //   }
+      //   page.drawText(text, {
+      //     x: 50,
+      //     y: textYPosition,
+      //     size: size,
+      //     color: rgb(0, 0, 0),
+      //   });
+      //   textYPosition -= size + lineSpacing;
+      // };
 
       // Add title
       addText("*Informe de Proyectos y Solicitudes", fontSize, 30);

@@ -38,7 +38,7 @@ function GenerarInforme() {
       const fontSize = 18;
 
       // Embed the JPEG image
-      const image = imagen;
+      const image = await pdfDoc.embedJpg(imagen);
 
       // Scale the image
       const scale = 0.3;

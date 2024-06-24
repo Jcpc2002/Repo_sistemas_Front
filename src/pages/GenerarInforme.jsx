@@ -22,7 +22,7 @@ function GenerarInforme() {
       console.log("Data received:", data);
 
       // Fetch the image from the public folder
-      const imageResponse = await fetch("/src/img/logoufps.jpeg");
+      const imageResponse = await fetch("/src/assets/logoufps.jpg");
 
       if (!imageResponse.ok) {
         throw new Error('Error fetching the image');

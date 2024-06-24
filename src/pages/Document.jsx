@@ -131,10 +131,10 @@ function Document() {
           <div className="flex flex-col gap-1">
             <h3 className="text-lg font-bold">Visualización de archivos:</h3>
             {documento.estado === 1 &&(
-              <p>Habilitado</p>
+              <p>Habilitado para usuarios particulares</p>
             )}
             {documento.estado === 0 &&(
-              <p>Desahibitado</p>
+              <p>Desahibitado para usuarios particulares</p>
             )}
           </div>
           <div className="flex flex-col gap-1">

@@ -38,17 +38,16 @@ export default function SubirDocumento() {
   const handleChange1 = (e) => {
     const value = e.target.value;
     setInput1(value);
-    
   };
+
   const handleChange3 = (e) => {
     const value = e.target.value;
     setInput3(value);
-    
   };
+
   const handleChange4 = (e) => {
     const value = e.target.value;
     setInput4(value);
-    
   };
 
   useEffect(() => {
@@ -149,10 +148,10 @@ export default function SubirDocumento() {
     setFileLinks(fileLinks);
 
     const formData = {
-      nombre: event.target.nombre.value,
+      nombre: input1,
       tipodocumento: event.target.tipodocumento.value,
-      descripcion: event.target.descripcion.value,
-      miembros: event.target.miembros.value,
+      descripcion: input3,
+      miembros: input4,
       archivos: fileLinks,
       semestre: inputValue,
       estado: isOn ? "1" : "0",
@@ -180,6 +179,7 @@ export default function SubirDocumento() {
         setInputValue("");
         setInput3("");
         setInput4("");
+        setFileNames([]);
       } else {
         console.error("Error al insertar el documento:", data.message);
       }

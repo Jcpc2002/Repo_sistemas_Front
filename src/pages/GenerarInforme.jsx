@@ -38,23 +38,23 @@ function GenerarInforme() {
       const fontSize = 18;
 
       // Embed the JPEG image
-      const image = await pdfDoc.embedJpg(imagen);
-      console.log(imagen)
+     // const image = await pdfDoc.embedJpg(imagen);
+      //console.log(imagen)
       // Scale the image
-      const scale = 0.3;
-      const imageWidth = image.width * scale;
-      const imageHeight = image.height * scale;
+      //const scale = 0.3;
+      //const imageWidth = image.width * scale;
+      //const imageHeight = image.height * scale;
 
       // Calculate position to center the image
-      const xPosition = (width - imageWidth) / 2;
-      const yPosition = height - imageHeight - 4 * fontSize;
+      //const xPosition = (width - imageWidth) / 2;
+      //const yPosition = height - imageHeight - 4 * fontSize;
 
-      page.drawImage(image, {
-        x: xPosition,
-        y: yPosition,
-        width: imageWidth,
-        height: imageHeight,
-      });
+      // page.drawImage(image, {
+      //   x: xPosition,
+      //   y: yPosition,
+      //   width: imageWidth,
+      //   height: imageHeight,
+      // });
 
       let textYPosition = yPosition - 2 * fontSize;
 

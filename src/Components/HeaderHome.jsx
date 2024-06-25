@@ -17,7 +17,7 @@ export const HeaderHome = ({ setNumVistas, setNumDocs }) => {
         if (response.ok) {
           const data = await response.json();
           console.log(data);
-          setNumVistas(data.cantidadvisitas); // Actualizar estado en vez de localStorage
+          setNumVistas(data.cantidadvisitas);
           
         } else {
           console.error('Error al incrementar las visitas');
@@ -35,7 +35,7 @@ export const HeaderHome = ({ setNumVistas, setNumDocs }) => {
         if (response.ok) {
           const data = await response.json();
           console.log(data);
-          setNumDocs(data.documentos); // Actualizar estado en vez de localStorage
+          setNumDocs(data.documentos);
         } else {
           console.error("Error al obtener las categorías:", response.statusText);
         }

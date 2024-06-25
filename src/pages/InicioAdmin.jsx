@@ -1,7 +1,7 @@
 import { Titulo } from '../Components/Titulo';
 import { CategoriasAdmin } from "../Components/CategoriasAdmin";
 import { useState, useEffect } from 'react';
-import { HeaderHome } from '../Components/HeaderHome'; // Importación nombrada
+import { HeaderHome } from '../Components/HeaderHome';
 import ListDocumentos from './ListDocumentos';
 
 export default function InicioAdmin() {
@@ -12,7 +12,6 @@ export default function InicioAdmin() {
     const numCategories = categorias.length;
 
     useEffect(() => {
-      // Realizar la solicitud al backend para obtener las categorías
       fetchCategorias();
     }, []);
   
@@ -21,7 +20,7 @@ export default function InicioAdmin() {
         const response = await fetch("https://backayd-production.up.railway.app/traerCategoria");
         if (response.ok) {
           const data = await response.json();
-          setCategorias(data.data); // Guardar las categorías en el estado
+          setCategorias(data.data);
         } else {
           console.error("Error al obtener las categorías:", response.statusText);
         }

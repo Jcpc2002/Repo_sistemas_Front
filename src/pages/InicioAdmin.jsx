@@ -5,10 +5,11 @@ import ListDocumentos from './ListDocumentos';
 
 export default function () {
     const [categorias, setCategorias] = useState([]);
+    const [numVistas, setNumVistas] = useState(localStorage.getItem("vistas"));
+    const [numDocs, setNumDocs] = useState(localStorage.getItem("NumDocs"));
+    
     const numCategories = categorias.length;
-    const numVistas = localStorage.getItem("vistas");
-    const numDocs = localStorage.getItem("NumDocs");
-   console.log(categorias);
+
     useEffect(() => {
       // Realizar la solicitud al backend para obtener las categorías
       fetchCategorias();
@@ -19,7 +20,6 @@ export default function () {
         const response = await fetch("https://backayd-production.up.railway.app/traerCategoria");
         if (response.ok) {
           const data = await response.json();
-          
           setCategorias(data.data); // Guardar las categorías en el estado
         } else {
           console.error("Error al obtener las categorías:", response.statusText);
@@ -28,6 +28,12 @@ export default function () {
         console.error("Error de red:", error);
       }
     };
+
+    // Efecto para actualizar el estado local cuando localStorage cambie
+    useEffect(() => {
+      setNumVistas(localStorage.getItem("vistas"));
+      setNumDocs(localStorage.getItem("NumDocs"));
+    }, [localStorage.getItem("vistas"), localStorage.getItem("NumDocs")]);
 
   return (
     <div className="flex flex-col items-center pt-6 pb-6">
@@ -51,7 +57,7 @@ export default function () {
         </div>
         <div className='grid-cols-1 pt-8 grid md:grid-cols-4 gap-6'>
             {categorias.map((categoria) => (
-                <CategoriasAdmin name={categoria.nombre} link={categoria.id} />
+                <CategoriasAdmin key={categoria.id} name={categoria.nombre} link={categoria.id} />
                 
               ))} 
             

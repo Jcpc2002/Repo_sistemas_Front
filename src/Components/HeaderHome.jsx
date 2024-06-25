@@ -18,6 +18,8 @@ export const HeaderHome = () => {
           const data = await response.json();
           console.log(data);
           localStorage.setItem("vistas", data.cantidadvisitas);
+          // Actualiza el estado local inmediatamente después de actualizar el localStorage
+          setNumVistas(data.cantidadvisitas);
           
         } else {
           console.error('Error al incrementar las visitas');
@@ -36,6 +38,8 @@ export const HeaderHome = () => {
           const data = await response.json();
           console.log(data);
           localStorage.setItem("NumDocs", data.documentos);
+          // Actualiza el estado local inmediatamente después de actualizar el localStorage
+          setNumDocs(data.documentos);
         } else {
           console.error("Error al obtener las categorías:", response.statusText);
         }

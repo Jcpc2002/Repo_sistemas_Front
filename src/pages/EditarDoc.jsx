@@ -353,12 +353,14 @@ export default function editarDocumento() {
               >
                 Autenticarse con Google
               </button>
+              <Link to={`/homeAdmin/documento/${id}`}>
               <button
                 type="submit"
                 className="bg-green-500 text-white px-4 py-2 rounded-md"
               >
                 Enviar
               </button>
+              </Link>
             </div>
             <div>
               <Link to={`/homeAdmin/documento/${id}`}>

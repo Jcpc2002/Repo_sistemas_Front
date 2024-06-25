@@ -1,10 +1,10 @@
-import { Titulo } from '../Components/Titulo'
+import { Titulo } from '../Components/Titulo';
 import { CategoriasAdmin } from "../Components/CategoriasAdmin";
 import { useState, useEffect } from 'react';
-import {HeaderHome} from '../Components/HeaderHome';
+import { HeaderHome } from '../Components/HeaderHome'; // Importación nombrada
 import ListDocumentos from './ListDocumentos';
 
-export default function Home() {
+export default function InicioAdmin() {
     const [categorias, setCategorias] = useState([]);
     const [numVistas, setNumVistas] = useState(0);
     const [numDocs, setNumDocs] = useState(0);
@@ -53,7 +53,7 @@ export default function Home() {
         </div>
         <div className='grid-cols-1 pt-8 grid md:grid-cols-4 gap-6'>
             {categorias.map((categoria) => (
-                <CategoriasAdmin name={categoria.nombre} link={categoria.id} />
+                <CategoriasAdmin key={categoria.id} name={categoria.nombre} link={categoria.id} />
               ))} 
         </div>
       </div>

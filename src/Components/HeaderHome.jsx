@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import logo from '../assets/UFPS_Logo.png';
 import sistemas from '../assets/logo_sistemas.jpg';
 import { IoSearch } from "react-icons/io5";
 
-const HeaderHome = ({ setNumVistas, setNumDocs }) => {
+export const HeaderHome = ({ setNumVistas, setNumDocs }) => {
   
   useEffect(() => {
     const incrementarVisitas = async () => {
@@ -61,4 +61,3 @@ const HeaderHome = ({ setNumVistas, setNumDocs }) => {
     </header>
   );
 };
-export default HeaderHome;

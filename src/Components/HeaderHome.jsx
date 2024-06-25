@@ -1,12 +1,11 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import logo from '../assets/UFPS_Logo.png';
 import sistemas from '../assets/logo_sistemas.jpg';
 import { IoSearch } from "react-icons/io5";
 
-export const HeaderHome = ({ setNumVistas, setNumDocs }) => {
+export const HeaderHome = () => {
   
   useEffect(() => {
-    console.log("HeaderHome useEffect se está ejecutando");
     const incrementarVisitas = async () => {
       try {
         const response = await fetch('https://backayd-production.up.railway.app/vistas', {
@@ -18,7 +17,7 @@ export const HeaderHome = ({ setNumVistas, setNumDocs }) => {
         if (response.ok) {
           const data = await response.json();
           console.log(data);
-          setNumVistas(data.cantidadvisitas);
+          localStorage.setItem("vistas", data.cantidadvisitas);
           
         } else {
           console.error('Error al incrementar las visitas');
@@ -28,7 +27,7 @@ export const HeaderHome = ({ setNumVistas, setNumDocs }) => {
       }
     };
 
-    //incrementarVisitas();
+    incrementarVisitas();
 
     const cantidadDocs = async () => {
       try {
@@ -36,7 +35,7 @@ export const HeaderHome = ({ setNumVistas, setNumDocs }) => {
         if (response.ok) {
           const data = await response.json();
           console.log(data);
-          setNumDocs(data.documentos);
+          localStorage.setItem("NumDocs", data.documentos);
         } else {
           console.error("Error al obtener las categorías:", response.statusText);
         }
@@ -46,7 +45,7 @@ export const HeaderHome = ({ setNumVistas, setNumDocs }) => {
     };
 
     cantidadDocs();
-  }, [setNumVistas, setNumDocs]);
+  }, []);
 
   return (
     <header className='bg-white p-5 gap-4 justify-between flex flex-col md:flex-row shadow-xl'>

@@ -1,7 +1,7 @@
 import { Titulo } from '../Components/Titulo'
 import { CategoriasAdmin } from "../Components/CategoriasAdmin";
 import { useState, useEffect } from 'react';
-import HeaderHome from '../Components/HeaderHome';
+import {HeaderHome} from '../Components/HeaderHome';
 import ListDocumentos from './ListDocumentos';
 
 export default function Home() {

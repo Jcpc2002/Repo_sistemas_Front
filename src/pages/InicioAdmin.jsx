@@ -1,14 +1,16 @@
 import { Titulo } from '../Components/Titulo'
 import { CategoriasAdmin } from "../Components/CategoriasAdmin";
-import { useState , useEffect} from 'react';
+import { useState, useEffect } from 'react';
+import HeaderHome from '../Components/HeaderHome';
 import ListDocumentos from './ListDocumentos';
 
-export default function () {
+export default function Home() {
     const [categorias, setCategorias] = useState([]);
+    const [numVistas, setNumVistas] = useState(0);
+    const [numDocs, setNumDocs] = useState(0);
+
     const numCategories = categorias.length;
-    const numVistas = localStorage.getItem("vistas");
-    const numDocs = localStorage.getItem("NumDocs");
-   console.log(categorias);
+
     useEffect(() => {
       // Realizar la solicitud al backend para obtener las categorías
       fetchCategorias();
@@ -19,7 +21,6 @@ export default function () {
         const response = await fetch("https://backayd-production.up.railway.app/traerCategoria");
         if (response.ok) {
           const data = await response.json();
-          
           setCategorias(data.data); // Guardar las categorías en el estado
         } else {
           console.error("Error al obtener las categorías:", response.statusText);
@@ -29,8 +30,9 @@ export default function () {
       }
     };
 
-  return (
-    <div className="flex flex-col items-center pt-6 pb-6">
+    return (
+      <div className="flex flex-col items-center pt-6 pb-6">
+        <HeaderHome setNumVistas={setNumVistas} setNumDocs={setNumDocs} />
         <Titulo name="Inicio" />
         <div className='border border-slate-300 mt-6 flex flex-col p-6 w-[80%] items-center gap-4 rounded-md bg-white'>
           <h2 className='text-xl font-bold text-center'>Estadísticas de la página</h2>
@@ -52,10 +54,8 @@ export default function () {
         <div className='grid-cols-1 pt-8 grid md:grid-cols-4 gap-6'>
             {categorias.map((categoria) => (
                 <CategoriasAdmin name={categoria.nombre} link={categoria.id} />
-                
               ))} 
-            
         </div>
-    </div>
-  )
+      </div>
+    )
 }

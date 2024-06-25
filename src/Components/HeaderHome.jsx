@@ -3,7 +3,7 @@ import logo from '../assets/UFPS_Logo.png';
 import sistemas from '../assets/logo_sistemas.jpg';
 import { IoSearch } from "react-icons/io5";
 
-export const HeaderHome = () => {
+export const HeaderHome = ({ setNumVistas, setNumDocs }) => {
   
   useEffect(() => {
     const incrementarVisitas = async () => {
@@ -17,7 +17,7 @@ export const HeaderHome = () => {
         if (response.ok) {
           const data = await response.json();
           console.log(data);
-          localStorage.setItem("vistas", data.cantidadvisitas);
+          setNumVistas(data.cantidadvisitas); // Actualizar estado en vez de localStorage
           
         } else {
           console.error('Error al incrementar las visitas');
@@ -35,7 +35,7 @@ export const HeaderHome = () => {
         if (response.ok) {
           const data = await response.json();
           console.log(data);
-          localStorage.setItem("NumDocs", data.documentos);
+          setNumDocs(data.documentos); // Actualizar estado en vez de localStorage
         } else {
           console.error("Error al obtener las categorías:", response.statusText);
         }
@@ -45,7 +45,7 @@ export const HeaderHome = () => {
     };
 
     cantidadDocs();
-  }, []);
+  }, [setNumVistas, setNumDocs]);
 
   return (
     <header className='bg-white p-5 gap-4 justify-between flex flex-col md:flex-row shadow-xl'>

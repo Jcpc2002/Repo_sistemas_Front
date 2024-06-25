@@ -3,7 +3,7 @@ import logo from '../assets/UFPS_Logo.png';
 import sistemas from '../assets/logo_sistemas.jpg';
 import { IoSearch } from "react-icons/io5";
 
-export const HeaderHome = ({ setNumVistas, setNumDocs }) => {
+const HeaderHome = ({ setNumVistas, setNumDocs }) => {
   
   useEffect(() => {
     const incrementarVisitas = async () => {
@@ -61,3 +61,4 @@ export const HeaderHome = ({ setNumVistas, setNumDocs }) => {
     </header>
   );
 };
+export default HeaderHome;

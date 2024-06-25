@@ -6,6 +6,7 @@ import { IoSearch } from "react-icons/io5";
 export const HeaderHome = ({ setNumVistas, setNumDocs }) => {
   
   useEffect(() => {
+    console.log("HeaderHome useEffect se está ejecutando");
     const incrementarVisitas = async () => {
       try {
         const response = await fetch('https://backayd-production.up.railway.app/vistas', {

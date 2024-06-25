@@ -28,7 +28,7 @@ export const HeaderHome = ({ setNumVistas, setNumDocs }) => {
       }
     };
 
-    incrementarVisitas();
+    //incrementarVisitas();
 
     const cantidadDocs = async () => {
       try {

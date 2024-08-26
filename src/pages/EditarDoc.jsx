@@ -233,6 +233,7 @@ export default function editarDocumento() {
                 <input
                   value={input1}
                   onChange={handleChange1}
+                  
                   type="text"
                   name="nombre"
                   className="w-60 md:w-80 h-full bg-white outline-none border border-slate-400 rounded-md p-1 pl-5 pr-9 text-gray-900"
@@ -243,7 +244,7 @@ export default function editarDocumento() {
               <p className="text-lg md:w-[30%]">Semestre:</p>
               <div className="flex flex-col">
                 <input
-            
+                  
                   type="text"
                   name="semestre"
                   value={inputValue}
@@ -352,6 +353,7 @@ export default function editarDocumento() {
               >
                 Autenticarse con Google
               </button>
+              
               <button
                 type="submit"
                 className="bg-green-500 text-white px-4 py-2 rounded-md"

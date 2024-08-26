@@ -41,6 +41,10 @@ function EditarCategoria() {
 
   const handleConfirmDelete = async () => {
     if (!idCategoriaSeleccionada) {
+      Swal.fire({
+        icon: "error",
+        title: "No se ha seleccionado ninguna categoría para eliminar.",
+      });
       console.error("No se ha seleccionado ninguna categoría para eliminar.");
       return;
     }

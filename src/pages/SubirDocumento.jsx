@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { GoogleOAuthProvider, useGoogleLogin } from "@react-oauth/google";
 import { Titulo } from "../Components/Titulo";
@@ -22,6 +22,7 @@ export default function SubirDocumento() {
   const [input1, setInput1] = useState("");
   const [input3, setInput3] = useState("");
   const [input4, setInput4] = useState("");
+  const fileInputRef = useRef(null);
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -38,17 +39,16 @@ export default function SubirDocumento() {
   const handleChange1 = (e) => {
     const value = e.target.value;
     setInput1(value);
-    
   };
+
   const handleChange3 = (e) => {
     const value = e.target.value;
     setInput3(value);
-    
   };
+
   const handleChange4 = (e) => {
     const value = e.target.value;
     setInput4(value);
-    
   };
 
   useEffect(() => {
@@ -149,10 +149,10 @@ export default function SubirDocumento() {
     setFileLinks(fileLinks);
 
     const formData = {
-      nombre: event.target.nombre.value,
+      nombre: input1,
       tipodocumento: event.target.tipodocumento.value,
-      descripcion: event.target.descripcion.value,
-      miembros: event.target.miembros.value,
+      descripcion: input3,
+      miembros: input4,
       archivos: fileLinks,
       semestre: inputValue,
       estado: isOn ? "1" : "0",
@@ -180,6 +180,10 @@ export default function SubirDocumento() {
         setInputValue("");
         setInput3("");
         setInput4("");
+        setFileNames([]);
+        if (fileInputRef.current) {
+          fileInputRef.current.value = "";
+        }
       } else {
         console.error("Error al insertar el documento:", data.message);
       }
@@ -304,7 +308,12 @@ export default function SubirDocumento() {
             <div className="flex flex-col items-center md:flex-row md:w-full md:items-start">
               <p className="text-lg pb-2 md:w-[30%]">Archivos:</p>
               <div>
-                <input type="file" multiple onChange={handleFileChange} />
+                <input
+                  type="file"
+                  multiple
+                  onChange={handleFileChange}
+                  ref={fileInputRef}
+                />
               </div>
             </div>
             <div className="flex flex-col items-center md:flex-row md:w-full md:items-start">
@@ -326,11 +335,13 @@ export default function SubirDocumento() {
               <button
                 type="submit"
                 className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
-                disabled = {!isValid}
+                disabled={!isValid}
               >
                 Subir
               </button>
-              {!isValid && <p style={{ color: 'red' }}>El formato del semestre es incorrecto.</p>}
+              {!isValid && (
+                <p style={{ color: "red" }}>El formato del semestre es incorrecto.</p>
+              )}
             </div>
           </form>
           <p>Debes autenticarte con Google para poder subir el archivo al documento.</p>
@@ -340,20 +351,6 @@ export default function SubirDocumento() {
           >
             Autenticar con Google
           </button>
-          {fileLinks.length > 0 && (
-            <div className="mt-6">
-              <h3 className="text-lg font-semibold">Enlaces de Archivos:</h3>
-              <ul>
-                {fileLinks.map((link, index) => (
-                  <li key={index}>
-                    <a href={link} target="_blank" rel="noopener noreferrer">
-                      {link}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
         </div>
       </div>
     </GoogleOAuthProvider>

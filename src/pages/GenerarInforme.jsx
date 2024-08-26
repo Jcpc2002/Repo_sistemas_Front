@@ -21,41 +21,13 @@ function GenerarInforme() {
       const data = await response.json();
       console.log("Data received:", data);
 
-      // Fetch the image from the public folder
-      const imageResponse = await fetch("/src/assets/logoufps.jpg");
-
-      if (!imageResponse.ok) {
-        throw new Error('Error fetching the image');
-      }
-
-      const imageBytes = await imageResponse.arrayBuffer();
-
       // Create the PDF document
       const pdfDoc = await PDFDocument.create();
       let page = pdfDoc.addPage();
       const { width, height } = page.getSize();
       const fontSize = 18;
 
-      // Embed the JPEG image
-      const image = await pdfDoc.embedJpg(imageBytes);
-
-      // Scale the image
-      const scale = 0.3;
-      const imageWidth = image.width * scale;
-      const imageHeight = image.height * scale;
-
-      // Calculate position to center the image
-      const xPosition = (width - imageWidth) / 2;
-      const yPosition = height - imageHeight - 4 * fontSize;
-
-      page.drawImage(image, {
-        x: xPosition,
-        y: yPosition,
-        width: imageWidth,
-        height: imageHeight,
-      });
-
-      let textYPosition = yPosition - 2 * fontSize;
+      let textYPosition = height - fontSize * 2;
 
       // Function to add a new page when necessary
       const addNewPage = () => {

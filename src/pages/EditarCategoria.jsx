@@ -19,7 +19,7 @@ function EditarCategoria() {
 
   const fetchCategorias = async () => {
     try {
-      const response = await fetch("https://backayd-production.up.railway.app/traerCategoria");
+      const response = await fetch("http://localhost:3000/traerCategoria");
       if (response.ok) {
         const data = await response.json();
         setCategorias(data.data);
@@ -47,7 +47,7 @@ function EditarCategoria() {
 
     try {
       const response = await axios.delete(
-        "https://backayd-production.up.railway.app/eliminarCategoria",
+        "http://localhost:3000/eliminarCategoria",
         {
           data: { id: idCategoriaSeleccionada }, // Enviar el id de la categoría seleccionada
           headers: {
@@ -103,7 +103,7 @@ function EditarCategoria() {
     try {
       if (nombreCategoria || descripcionCategoria) {
         const response = await axios.put(
-          "https://backayd-production.up.railway.app/editarCategoria",
+          "http://localhost:3000/editarCategoria",
           {
             id: idCategoriaSeleccionada,
             nombre: nombreCategoria,

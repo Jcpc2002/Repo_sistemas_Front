@@ -28,7 +28,7 @@ function Document() {
   const infoDocumento = async () => {
     try {
       const response = await axios.post(
-        "https://backayd-production.up.railway.app/filtrarDocumentoPorID",
+        "http://localhost:3000/filtrarDocumentoPorID",
         data,
         {
           headers: {
@@ -67,7 +67,7 @@ function Document() {
   const handleConfirmDelete = async () => {
     try {
       const response = await axios.delete(
-        "https://backayd-production.up.railway.app/eliminarDocumento",
+        "http://localhost:3000/eliminarDocumento",
         {
           data: { id },
           headers: {

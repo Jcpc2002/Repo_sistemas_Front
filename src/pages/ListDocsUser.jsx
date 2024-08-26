@@ -37,7 +37,7 @@ function ListDocsUser() {
   const infoCategoria = async () => {
     try {
       const response2 = await axios.post(
-        "https://backayd-production.up.railway.app/traerCategoriasPorId",
+        "http://localhost:3000/traerCategoriasPorId",
         data,
         {
           headers: {
@@ -68,7 +68,7 @@ function ListDocsUser() {
   const traerDocumentos = async () => {
     try {
       const response = await axios.post(
-        "https://backayd-production.up.railway.app/filtrarDocumentosPorCategoria",
+        "http://localhost:3000/filtrarDocumentosPorCategoria",
         data,
         {
           headers: {

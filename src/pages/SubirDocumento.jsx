@@ -57,7 +57,7 @@ export default function SubirDocumento() {
 
   const fetchCategorias = async () => {
     try {
-      const response = await fetch("https://backayd-production.up.railway.app/traerCategoria");
+      const response = await fetch("http://localhost:3000/traerCategoria");
       if (response.ok) {
         const data = await response.json();
         setCategorias(data.data);
@@ -161,7 +161,7 @@ export default function SubirDocumento() {
     console.log(formData);
 
     try {
-      const response = await fetch("https://backayd-production.up.railway.app/insertarDocumento", {
+      const response = await fetch("http://localhost:3000/insertarDocumento", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -189,7 +189,7 @@ export default function SubirDocumento() {
 
     try {
       const response = await fetch(
-        "https://backayd-production.up.railway.app/cantidadDeDocumentos"
+        "http://localhost:3000/cantidadDeDocumentos"
       );
       if (response.ok) {
         const data = await response.json();

@@ -17,7 +17,7 @@ export const CreateCategory = () => {
 
     try {
       const response = await axios.post(
-        "https://backayd-production.up.railway.app/categorias",
+        "http://localhost:3000/categorias",
         body,
         {
           headers: {

@@ -8,7 +8,7 @@ export const HeaderHome = () => {
   useEffect(() => {
     const incrementarVisitas = async () => {
       try {
-        const response = await fetch('https://backayd-production.up.railway.app/vistas', {
+        const response = await fetch('http://localhost:3000/vistas', {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',

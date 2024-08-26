@@ -39,7 +39,7 @@ export default function ActualizarDatos() {
     try {
       if (nombre || correo) {
         const response = await axios.put(
-          "https://backayd-production.up.railway.app/modificarDatos",
+          "http://localhost:3000/modificarDatos",
           data,
           {
             headers: {

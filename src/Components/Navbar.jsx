@@ -7,7 +7,7 @@ export const Navbar = () => {
   useEffect(() => {
     const incrementarVisitas = async () => {
       try {
-        const response = await fetch('http://localhost:3000/vistas', {
+        const response = await fetch('https://reposistemasback-production.up.railway.app/vistas', {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -30,7 +30,7 @@ export const Navbar = () => {
 
     const cantidadDocs = async () => {
       try {
-        const response = await fetch("http://localhost:3000/cantidadDeDocumentos");
+        const response = await fetch("https://reposistemasback-production.up.railway.app/cantidadDeDocumentos");
         if (response.ok) {
           const data = await response.json();
           console.log(data);

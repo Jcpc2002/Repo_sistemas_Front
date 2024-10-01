@@ -19,7 +19,7 @@ function EditarCategoria() {
 
   const fetchCategorias = async () => {
     try {
-      const response = await fetch("http://localhost:3000/traerCategoria");
+      const response = await fetch("https://reposistemasback-production.up.railway.app/traerCategoria");
       if (response.ok) {
         const data = await response.json();
         setCategorias(data.data);
@@ -51,7 +51,7 @@ function EditarCategoria() {
 
     try {
       const response = await axios.delete(
-        "http://localhost:3000/eliminarCategoria",
+        "https://reposistemasback-production.up.railway.app/eliminarCategoria",
         {
           data: { id: idCategoriaSeleccionada }, // Enviar el id de la categoría seleccionada
           headers: {
@@ -107,7 +107,7 @@ function EditarCategoria() {
     try {
       if (nombreCategoria || descripcionCategoria) {
         const response = await axios.put(
-          "http://localhost:3000/editarCategoria",
+          "https://reposistemasback-production.up.railway.app/editarCategoria",
           {
             id: idCategoriaSeleccionada,
             nombre: nombreCategoria,

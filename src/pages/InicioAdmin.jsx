@@ -16,7 +16,7 @@ export default function () {
   
     const fetchCategorias = async () => {
       try {
-        const response = await fetch("http://localhost:3000/traerCategoria");
+        const response = await fetch("https://reposistemasback-production.up.railway.app/traerCategoria");
         if (response.ok) {
           const data = await response.json();
           

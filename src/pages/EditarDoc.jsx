@@ -59,7 +59,7 @@ export default function editarDocumento() {
   const fetchCategorias = async () => {
     try {
       const response = await fetch(
-        "http://localhost:3000/traerCategoria"
+        "https://reposistemasback-production.up.railway.app/traerCategoria"
       );
       if (response.ok) {
         const data = await response.json();
@@ -176,7 +176,7 @@ export default function editarDocumento() {
 
     try {
       const response = await fetch(
-        "http://localhost:3000/editarDocumento",
+        "https://reposistemasback-production.up.railway.app/editarDocumento",
         {
           method: "PUT",
           headers: {

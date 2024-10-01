@@ -36,7 +36,7 @@ export default function ListDocumentos() {
   const infoCategoria = async () => {
     try {
       const response2 = await axios.post(
-        "http://localhost:3000/traerCategoriasPorId",
+        "https://reposistemasback-production.up.railway.app/traerCategoriasPorId",
         data,
         {
           headers: {
@@ -67,7 +67,7 @@ export default function ListDocumentos() {
   const traerDocumentos = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/filtrarDocumentosPorCategoria",
+        "https://reposistemasback-production.up.railway.app/filtrarDocumentosPorCategoria",
         data,
         {
           headers: {

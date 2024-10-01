@@ -21,7 +21,7 @@ export default function NuevaContraena() {
     }
 
     try {
-      const response = await axios.put("http://localhost:3000/editarContrasena", {
+      const response = await axios.put("https://reposistemasback-production.up.railway.app/editarContrasena", {
         codigo,
         contrasena,
       }, {

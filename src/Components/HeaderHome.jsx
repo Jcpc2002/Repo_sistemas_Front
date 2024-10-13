@@ -31,7 +31,7 @@ export const HeaderHome = () => {
 
     const cantidadDocs = async () => {
       try {
-        const response = await fetch("https://backayd-production.up.railway.app/cantidadDeDocumentos");
+        const response = await fetch("https://reposistemasback-production.up.railway.app/cantidadDeDocumentos");
         if (response.ok) {
           const data = await response.json();
           console.log(data);

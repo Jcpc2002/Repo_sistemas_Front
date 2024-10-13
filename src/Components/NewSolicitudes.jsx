@@ -45,6 +45,8 @@ function NewSolicitudes() {
           title: "Solicitud aceptada",
         });
         console.log(`Correo enviado a ${solicitud.correo} exitosamente.`);
+
+        setData(data.filter((item) => item.codigousuario !== solicitud.codigousuario));
       } else {
         console.error("Error al enviar el correo.");
       }
@@ -68,6 +70,8 @@ function NewSolicitudes() {
           icon: "success",
           title: "Solicitud rechazada",
         });
+
+        setData(data.filter((item) => item.codigousuario !== solicitud.codigousuario));
         
       } else {
         console.error("Error al rechazar la solicitud.");

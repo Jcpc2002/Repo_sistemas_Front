@@ -1,7 +1,6 @@
 import { Titulo } from "../Components/Titulo";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Modal from "../Components/Modal";
 import axios from "axios";
 import Swal from "sweetalert2";
 
@@ -10,7 +9,6 @@ function EditarCategoria() {
   const [idCategoriaSeleccionada, setIdCategoriaSeleccionada] = useState(null);
   const [nombreCategoria, setNombreCategoria] = useState("");
   const [descripcionCategoria, setDescripcionCategoria] = useState("");
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -31,14 +29,6 @@ function EditarCategoria() {
     }
   };
 
-  const handleDeleteClick = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
-
   const handleConfirmDelete = async () => {
     if (!idCategoriaSeleccionada) {
       Swal.fire({
@@ -48,8 +38,8 @@ function EditarCategoria() {
       console.error("No se ha seleccionado ninguna categoría para eliminar.");
       return;
     }
-  
-    
+
+    // Mostrar el cuadro de diálogo de confirmación con SweetAlert2
     const resultado = await Swal.fire({
       title: "¿Estás seguro?",
       text: "Esta acción no se puede deshacer. ¿Deseas eliminar esta categoría?",
@@ -60,14 +50,14 @@ function EditarCategoria() {
       confirmButtonText: "Sí, eliminar",
       cancelButtonText: "Cancelar",
     });
-  
-    
+
+    // Si el usuario confirma, proceder con la eliminación
     if (resultado.isConfirmed) {
       try {
         const response = await axios.delete(
           "https://reposistemasback-production.up.railway.app/eliminarCategoria",
           {
-            data: { id: idCategoriaSeleccionada }, 
+            data: { id: idCategoriaSeleccionada },
             headers: {
               "Content-Type": "application/json",
             },
@@ -79,15 +69,11 @@ function EditarCategoria() {
             icon: "success",
             title: "Categoría eliminada con éxito",
           });
-          
           navigate("/homeAdmin/inicio-administrador");
         }
       } catch (error) {
         console.error("Error al eliminar la categoría:", error);
-      
       }
-  
-      setIsModalOpen(false);
     }
   };
 
@@ -107,7 +93,7 @@ function EditarCategoria() {
   };
 
   const handleEditarCategoria = async (event) => {
-    event.preventDefault(); // Evitar que el formulario se envíe automáticamente
+    event.preventDefault();
 
     if (!idCategoriaSeleccionada) {
       Swal.fire({
@@ -142,12 +128,11 @@ function EditarCategoria() {
             title: "Categoría editada con éxito",
           });
           fetchCategorias();
-          // Aquí puedes agregar el código necesario para mostrar un mensaje de éxito, etc.
         }
       } else {
         Swal.fire({
           icon: "warning",
-          title: "Tienes que cambiar minimo un dato.",
+          title: "Tienes que cambiar mínimo un dato.",
         });
       }
     } catch (error) {
@@ -160,9 +145,7 @@ function EditarCategoria() {
       <Titulo name="Editar categoría" />
       <div className="border border-slate-300 mt-6 flex flex-col p-6 w-[80%] items-center gap-4 rounded-md bg-white">
         <div className="flex flex-col items-center md:flex-row md:w-full md:items-start">
-          <p className="text-lg pb-2 md:w-[40%]">
-            Elige que categoría quieres editar:
-          </p>
+          <p className="text-lg pb-2 md:w-[40%]">Elige que categoría quieres editar:</p>
           <select
             name="categoria"
             id="id"
@@ -171,11 +154,7 @@ function EditarCategoria() {
           >
             <option value="">Selecciona una categoría...</option>
             {categorias.map((categoria) => (
-              <option
-                key={categoria.id}
-                value={categoria.id}
-                className="text-xl"
-              >
+              <option key={categoria.id} value={categoria.id} className="text-xl">
                 {categoria.nombre}
               </option>
             ))}
@@ -205,7 +184,7 @@ function EditarCategoria() {
             </div>
             <div className="flex justify-center w-full">
               <button
-                type="sumbit"
+                type="submit"
                 className="bg-emerald-600 text-white px-3 py-1 rounded-md mt-4"
               >
                 Guardar cambios
@@ -214,16 +193,11 @@ function EditarCategoria() {
           </form>
         </div>
         <button
-          onClick={handleDeleteClick}
+          onClick={handleConfirmDelete}
           className="bg-red-600 text-white px-3 py-1 rounded-md mt-4"
         >
           Eliminar categoría
         </button>
-        <Modal
-          isOpen={isModalOpen}
-          onClose={handleCloseModal}
-          onConfirm={handleConfirmDelete}
-        />
       </div>
     </div>
   );

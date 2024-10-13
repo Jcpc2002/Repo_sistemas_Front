@@ -48,33 +48,47 @@ function EditarCategoria() {
       console.error("No se ha seleccionado ninguna categoría para eliminar.");
       return;
     }
-
-    try {
-      const response = await axios.delete(
-        "https://reposistemasback-production.up.railway.app/eliminarCategoria",
-        {
-          data: { id: idCategoriaSeleccionada }, // Enviar el id de la categoría seleccionada
-          headers: {
-            "Content-Type": "application/json",
-          },
+  
+    
+    const resultado = await Swal.fire({
+      title: "¿Estás seguro?",
+      text: "Esta acción no se puede deshacer. ¿Deseas eliminar esta categoría?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Sí, eliminar",
+      cancelButtonText: "Cancelar",
+    });
+  
+    
+    if (resultado.isConfirmed) {
+      try {
+        const response = await axios.delete(
+          "https://reposistemasback-production.up.railway.app/eliminarCategoria",
+          {
+            data: { id: idCategoriaSeleccionada }, 
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        if (response.status === 200) {
+          console.log("Categoría eliminada correctamente");
+          Swal.fire({
+            icon: "success",
+            title: "Categoría eliminada con éxito",
+          });
+          
+          navigate("/homeAdmin/inicio-administrador");
         }
-      );
-      if (response.status === 200) {
-        console.log("Categoría eliminada correctamente");
-        // Redireccionar o actualizar la UI después de eliminar la categoría
-        Swal.fire({
-          icon: "success",
-          title: "Categoría eliminada con éxito",
-        });
-        navigate("/homeAdmin/inicio-administrador");
-        // Aquí puedes agregar el código necesario para mostrar un mensaje de éxito, etc.
+      } catch (error) {
+        console.error("Error al eliminar la categoría:", error);
+      
       }
-    } catch (error) {
-      console.error("Error al eliminar la categoría:", error);
-      // Manejar el error según tus necesidades (mostrar mensaje, etc.)
+  
+      setIsModalOpen(false);
     }
-
-    setIsModalOpen(false);
   };
 
   const handleCategoriaChange = (event) => {

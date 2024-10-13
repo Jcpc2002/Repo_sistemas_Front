@@ -42,12 +42,12 @@ function EditarCategoria() {
     // Mostrar el cuadro de diálogo de confirmación con SweetAlert2
     const resultado = await Swal.fire({
       title: "¿Estás seguro?",
-      text: "Esta acción no se puede deshacer. ¿Deseas eliminar esta categoría?",
+      text: "Esta acción eliminara todos los documentos asociados a esta categoria.",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#d33",
       cancelButtonColor: "#3085d6",
-      confirmButtonText: "Sí, eliminar",
+      confirmButtonText: "Eliminar",
       cancelButtonText: "Cancelar",
     });
 

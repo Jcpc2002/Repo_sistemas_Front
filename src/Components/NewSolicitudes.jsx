@@ -56,28 +56,43 @@ function NewSolicitudes() {
   };
 
   const handleRechazarSolicitud = async (solicitud) => {
-    try {
-      const response = await fetch("https://reposistemasback-production.up.railway.app/rechazarSolicitud", {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ codigousuario: solicitud.codigousuario}),
-      });
-
-      if (response.ok) {
-        Swal.fire({
-          icon: "success",
-          title: "Solicitud rechazada",
+    
+    const resultado = await Swal.fire({
+      title: "¿Estás seguro?",
+      text: "Esta acción no se puede deshacer. ¿Deseas rechazar esta solicitud?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Sí, rechazar",
+      cancelButtonText: "Cancelar",
+    });
+  
+    
+    if (resultado.isConfirmed) {
+      try {
+        const response = await fetch("https://reposistemasback-production.up.railway.app/rechazarSolicitud", {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ codigousuario: solicitud.codigousuario }),
         });
-
-        setData(data.filter((item) => item.codigousuario !== solicitud.codigousuario));
-        
-      } else {
-        console.error("Error al rechazar la solicitud.");
+  
+        if (response.ok) {
+          Swal.fire({
+            icon: "success",
+            title: "Solicitud rechazada",
+          });
+          
+          
+          setData(data.filter((item) => item.codigousuario !== solicitud.codigousuario));
+        } else {
+          console.error("Error al rechazar la solicitud.");
+        }
+      } catch (error) {
+        console.error("Error de conexión al rechazar la solicitud:", error);
       }
-    } catch (error) {
-      console.error("Error de conexión al rechazar la solicitud:", error);
     }
   };
 

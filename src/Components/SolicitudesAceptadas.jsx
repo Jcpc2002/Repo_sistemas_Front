@@ -56,12 +56,22 @@ function SolicitudesAceptadas() {
                   {solicitud.codigousuario}
                 </td>
                 <td className="py-2 px-4 border-b">{solicitud.nombre}</td>
-                <td className="py-2 px-4 border-b break-all">{solicitud.correo}</td>
+                <td className="py-2 px-4 border-b break-all">
+                  {solicitud.correo}
+                </td>
                 <td className="py-2 px-4 border-b text-left">
-                  <div className="flex justify-center gap-2 break-">
-                  <a href={solicitud.archivo} target="_blank" rel="noopener noreferrer">
-                    <IoDocument className="text-4xl text-blue-950" />
-                  </a>
+                  <div className="flex justify-center gap-2">
+                    {solicitud.archivo ? (
+                      <a
+                        href={solicitud.archivo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <IoDocument className="text-4xl text-blue-950" />
+                      </a>
+                    ) : (
+                      <p></p>
+                    )}
                   </div>
                 </td>
                 <td className="py-2 px-4 border-b">

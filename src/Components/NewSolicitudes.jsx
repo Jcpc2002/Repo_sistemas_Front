@@ -53,6 +53,30 @@ function NewSolicitudes() {
     }
   };
 
+  const handleRechazarSolicitud = async (solicitud) => {
+    try {
+      const response = await fetch("https://reposistemasback-production.up.railway.app/rechazarSolicitud", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ codigo: solicitud.codigousuario}),
+      });
+
+      if (response.ok) {
+        Swal.fire({
+          icon: "success",
+          title: "Solicitud rechazada",
+        });
+        
+      } else {
+        console.error("Error al rechazar la solicitud.");
+      }
+    } catch (error) {
+      console.error("Error de conexión al rechazar la solicitud:", error);
+    }
+  };
+
   return (
     <div className="overflow-x-auto w-[100%] flex justify-center">
       {loading ? (
@@ -89,7 +113,9 @@ function NewSolicitudes() {
                     >
                       <FaCheck />
                     </button>
-                    <button className="bg-red-500 text-white p-2 rounded-full">
+                    <button className="bg-red-500 text-white p-2 rounded-full"
+                      onClick={() => handleRechazarSolicitud(solicitud)}
+                    >
                       <IoClose />
                     </button>
                   </div>

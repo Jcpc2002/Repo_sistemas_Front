@@ -60,7 +60,7 @@ function NewSolicitudes() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ codigo: solicitud.codigousuario}),
+        body: JSON.stringify({ codigousuario: solicitud.codigousuario}),
       });
 
       if (response.ok) {

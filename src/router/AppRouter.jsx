@@ -17,6 +17,7 @@ import DocsUser from "../pages/DocsUser";
 import EnviarSolicitud from "../pages/EnviarSolicitud";
 import NuevaContra from "../pages/NuevaContra";
 import EditarDoc from "../pages/EditarDoc";
+import EnviarDocumento from "../pages/EnviarDocumento";
 
 const AppRouter = () => {
   return (

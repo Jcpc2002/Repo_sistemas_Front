@@ -31,7 +31,7 @@ function NewSolicitudes() {
   
   const handleAceptarSolicitud = async (solicitud) => {
     try {
-      const response = await fetch("https://repositoriosistemas.netlify.app/enviarCorreo", {
+      const response = await fetch("https://reposistemasback-production.up.railway.app/enviarCorreo", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

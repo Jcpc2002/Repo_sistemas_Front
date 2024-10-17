@@ -18,6 +18,7 @@ import EnviarSolicitud from "../pages/EnviarSolicitud";
 import NuevaContra from "../pages/NuevaContra";
 import EditarDoc from "../pages/EditarDoc";
 import EnviarDocumento from "../pages/EnviarDocumento";
+import SubirDocAlumno from "../pages/SubirDocAlumno";
 
 const AppRouter = () => {
   return (
@@ -38,6 +39,7 @@ const AppRouter = () => {
           <Route path="actualizar-contraseña" element={<NuevaContraena />} />
           <Route path="actualizar-datos" element={<ActualizarDatos />} />
           <Route path="subir-documento" element={<SubirDocumento />} />
+          <Route path="subir-doc-solicitudes/:id" element={<SubirDocAlumno/>} />
           <Route path="inicio-administrador" element={<InicioAdmin />} />
           <Route path="lista-documentos/:id" element={<ListDocumentos />} />
           <Route path="documento/:id" element={<Document />} />

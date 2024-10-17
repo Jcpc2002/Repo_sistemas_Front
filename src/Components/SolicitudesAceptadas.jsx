@@ -1,6 +1,6 @@
 import { IoDocument } from "react-icons/io5";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function SolicitudesAceptadas() {
   const [data, setData] = useState([]);
@@ -29,10 +29,6 @@ function SolicitudesAceptadas() {
 
     fetchSolicitudes();
   }, []);
-
-  const handleSubirDocumento = () => {
-    navigate("/homeAdmin/subir-documento");
-  };
 
   return (
     <div className="overflow-x-auto w-[100%] flex justify-center">
@@ -82,12 +78,16 @@ function SolicitudesAceptadas() {
                 </td>
                 <td className="py-2 px-4 border-b">
                   <div className="flex justify-center gap-3">
-                    <button
+                    <Link
+                      to={`/homeAdmin/subir-doc-solicitudes/${solicitud.id}`}
                       className="bg-green-500 text-white p-2 rounded-md"
-                      onClick={handleSubirDocumento}
+                      state={{
+                        archivo: solicitud.archivo,
+                        descripcion: solicitud.descripcion
+                      }}
                     >
-                      Subir
-                    </button>
+                      Enviar
+                    </Link>
                   </div>
                 </td>
               </tr>

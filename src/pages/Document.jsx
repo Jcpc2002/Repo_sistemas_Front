@@ -108,13 +108,11 @@ function Document() {
     <div className="flex flex-col items-center pt-6 pb-6">
       <Titulo name="Documento" />
       <div className="border border-slate-300 mt-6 flex flex-col p-6 w-[80%] items-center gap-4 rounded-md bg-white">
-        <h2 className="text-xl text-center font-bold">
-          {documento.nombre}
-        </h2>
+        <h2 className="text-xl text-center font-bold">{documento.nombre}</h2>
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-1">
             <h3 className="text-lg font-bold">Categoría</h3>
-            <p>{documento.tipodocumento}</p>
+            <p>{documento.nombreCategoria}</p>
           </div>
           <div className="flex flex-col gap-1">
             <h3 className="text-lg font-bold">Descripción</h3>
@@ -129,11 +127,21 @@ function Document() {
             <p>{documento.semestre}</p>
           </div>
           <div className="flex flex-col gap-1">
+            <h3 className="text-lg font-bold">Fecha de subida</h3>
+            <p>
+              {new Date(documento.fechaSubida).toLocaleDateString("es-ES", {
+                year: "numeric",
+                month: "2-digit",
+                day: "2-digit",
+              })}
+            </p>
+          </div>
+          <div className="flex flex-col gap-1">
             <h3 className="text-lg font-bold">Visualización de archivos:</h3>
-            {documento.estado === 1 &&(
+            {documento.estado === 1 && (
               <p>Habilitado para usuarios particulares</p>
             )}
-            {documento.estado === 0 &&(
+            {documento.estado === 0 && (
               <p>Desahibitado para usuarios particulares</p>
             )}
           </div>
@@ -141,7 +149,11 @@ function Document() {
             <h3 className="text-lg font-bold">Archivos</h3>
             <div className="flex gap-6">
               <div className="flex flex-col items-center w-[100px] break-all">
-                <a href={documento.archivos} target="_blank" rel="noopener noreferrer">
+                <a
+                  href={documento.archivos}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <IoDocument className="text-4xl" />
                 </a>
                 <p className="text-center">Link</p>

@@ -23,6 +23,7 @@ export default function SubirDocumento() {
   const [input3, setInput3] = useState("");
   const [input4, setInput4] = useState("");
   const fileInputRef = useRef(null);
+  const [selectedCategoryName, setSelectedCategoryName] = useState("");
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -49,6 +50,12 @@ export default function SubirDocumento() {
   const handleChange4 = (e) => {
     const value = e.target.value;
     setInput4(value);
+  };
+
+  const handleCategoryChange = (e) => {
+    const selectedIndex = e.target.selectedIndex;
+    const selectedName = e.target.options[selectedIndex].text;
+    setSelectedCategoryName(selectedName);
   };
 
   useEffect(() => {
@@ -151,6 +158,7 @@ export default function SubirDocumento() {
     const formData = {
       nombre: input1,
       tipodocumento: event.target.tipodocumento.value,
+      categoriaNombre: selectedCategoryName,
       descripcion: input3,
       miembros: input4,
       archivos: fileLinks,
@@ -292,6 +300,9 @@ export default function SubirDocumento() {
                   name="tipodocumento"
                   id="tipodocumento"
                   className="w-60 md:w-80 h-full bg-white outline-none border border-slate-400 rounded-md p-1 pl-5 pr-9 text-gray-900"
+                  onChange={(e) => {
+                    handleCategoryChange(e);
+                  }}
                 >
                   {categorias.map((categoria) => (
                     <option

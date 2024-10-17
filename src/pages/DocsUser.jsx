@@ -4,18 +4,16 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import ModalDocument from "../Components/ModalDocument";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Swal from "sweetalert2";
+
 
 function DocsUser() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const { id } = useParams();
   const [documento, setDocumento] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const navigate = useNavigate();
+
 
   useEffect(() => {
-    // Realizar la solicitud al backend para obtener los documentos
     infoDocumento();
   }, []);
 
@@ -55,41 +53,6 @@ function DocsUser() {
     }
   };
 
-  const handleDeleteClick = async () => {
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleConfirmDelete = async () => {
-    try {
-      const response = await axios.delete(
-        "https://reposistemasback-production.up.railway.app/eliminarDocumento",
-        {
-          data: { id },
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      if (response.status === 200) {
-        console.log("Documento eliminado correctamente");
-        // Redireccionar o actualizar la UI después de eliminar el documento
-        Swal.fire({
-          icon: "success",
-          title: "Documento eliminado con éxito",
-        });
-        navigate("/homeAdmin/inicio-administrador");
-      }
-    } catch (error) {
-      console.error("Error al eliminar el documento:", error);
-      // Manejar el error según tus necesidades (mostrar mensaje, etc.)
-    }
-    console.log("Elemento eliminado");
-    setIsModalOpen(false);
-  };
 
   if (loading) {
     return <div>Cargando...</div>;
@@ -111,7 +74,7 @@ function DocsUser() {
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-1">
             <h3 className="text-lg font-bold">Categoría</h3>
-            <p>{documento.tipodocumento}</p>
+            <p>{documento.nombreCategoria}</p>
           </div>
           <div className="flex flex-col gap-1">
             <h3 className="text-lg font-bold">Descripción</h3>

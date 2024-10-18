@@ -4,6 +4,7 @@ import { GoogleOAuthProvider, useGoogleLogin } from "@react-oauth/google";
 import { Titulo } from "../Components/Titulo";
 import Swal from "sweetalert2";
 import { Link, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const CLIENT_ID =
   "656150395710-piilf5k7dor29rpi15q80q20a5o5vld5.apps.googleusercontent.com"; // Reemplaza con tu CLIENT_ID de Google OAuth
@@ -13,16 +14,20 @@ const SCOPES = "https://www.googleapis.com/auth/drive.file";
 const DRIVE_FOLDER_ID = "1L251mP-XeIuyK4Bf1tkd0T72n_8kGj51"; // Reemplaza con el ID de la carpeta de destino en Google Drive
 
 export default function editarDocumento() {
+
+  const location = useLocation(); 
+  const { nombre, descripcion, miembros, semestre } = location.state || {};
+
   const [categorias, setCategorias] = useState([]);
   const [isOn, setIsOn] = useState(false);
   const [fileNames, setFileNames] = useState([]);
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState(semestre ||"");
   const [isValid, setIsValid] = useState(true);
   const [fileLinks, setFileLinks] = useState([]);
   const [accessToken, setAccessToken] = useState(null);
-  const [input1, setInput1] = useState("");
-  const [input3, setInput3] = useState("");
-  const [input4, setInput4] = useState("");
+  const [input1, setInput1] = useState(nombre ||"");
+  const [input3, setInput3] = useState(descripcion ||"");
+  const [input4, setInput4] = useState(miembros||"");
   const { id } = useParams();
 
   const handleChange = (e) => {

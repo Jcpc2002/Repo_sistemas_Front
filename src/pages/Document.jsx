@@ -175,6 +175,12 @@ function Document() {
             <Link
               to={`/homeAdmin/editar-documento/${documento.id}`}
               className="bg-emerald-600 text-white px-3 py-1 rounded-md mt-4"
+              state={{
+                nombre: documento.nombre,
+                descripcion: documento.descripcion,
+                miembros: documento.miembros,
+                semestre: documento.semestre,
+              }}
             >
               Editar documento
             </Link>

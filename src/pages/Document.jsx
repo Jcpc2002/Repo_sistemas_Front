@@ -28,7 +28,7 @@ function Document() {
   const infoDocumento = async () => {
     try {
       const response = await axios.post(
-        "/api/filtrarDocumentoPorID",
+        "https://reposistemasback-production.up.railway.app/filtrarDocumentoPorID",
         data,
         {
           headers: {
@@ -67,7 +67,7 @@ function Document() {
   const handleConfirmDelete = async () => {
     try {
       const response = await axios.delete(
-        "/api/eliminarDocumento",
+        "https://reposistemasback-production.up.railway.app/eliminarDocumento",
         {
           data: { id },
           headers: {

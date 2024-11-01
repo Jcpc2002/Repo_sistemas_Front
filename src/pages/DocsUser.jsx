@@ -25,7 +25,7 @@ function DocsUser() {
   const infoDocumento = async () => {
     try {
       const response = await axios.post(
-        "/api/filtrarDocumentoPorID",
+        "https://reposistemasback-production.up.railway.app/filtrarDocumentoPorID",
         data,
         {
           headers: {

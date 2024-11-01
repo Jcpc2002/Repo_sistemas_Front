@@ -11,7 +11,7 @@ function SolicitudesAceptadas() {
     const fetchSolicitudes = async () => {
       try {
         const response = await fetch(
-          "/api/traerSolicitudesAceptadas"
+          "https://reposistemasback-production.up.railway.app/traerSolicitudesAceptadas"
         );
         const result = await response.json();
         console.log(result);

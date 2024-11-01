@@ -57,7 +57,7 @@ export default function SubirDocAlumno() {
 
   const fetchCategorias = async () => {
     try {
-      const response = await fetch("/api/traerCategoria");
+      const response = await fetch("https://reposistemasback-production.up.railway.app/traerCategoria");
       if (response.ok) {
         const data = await response.json();
         setCategorias(data.data);
@@ -90,7 +90,7 @@ export default function SubirDocAlumno() {
     console.log(formData);
 
     try {
-      const response = await fetch("/api/insertarDocumento", {
+      const response = await fetch("https://reposistemasback-production.up.railway.app/insertarDocumento", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -119,7 +119,7 @@ export default function SubirDocAlumno() {
 
     try {
       const response = await fetch(
-        "/api/cantidadDeDocumentos"
+        "https://reposistemasback-production.up.railway.app/cantidadDeDocumentos"
       );
       if (response.ok) {
         const data = await response.json();

@@ -8,7 +8,7 @@ export const HeaderHome = () => {
   useEffect(() => {
     const incrementarVisitas = async () => {
       try {
-        const response = await fetch('https://reposistemasback-production.up.railway.app/vistas', {
+        const response = await fetch('/api/vistas', {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -31,7 +31,7 @@ export const HeaderHome = () => {
 
     const cantidadDocs = async () => {
       try {
-        const response = await fetch("https://reposistemasback-production.up.railway.app/cantidadDeDocumentos");
+        const response = await fetch("/api/cantidadDeDocumentos");
         if (response.ok) {
           const data = await response.json();
           console.log(data);

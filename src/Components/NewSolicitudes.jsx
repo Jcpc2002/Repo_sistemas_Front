@@ -11,7 +11,7 @@ function NewSolicitudes() {
     
     const fetchSolicitudes = async () => {
       try {
-        const response = await fetch("https://reposistemasback-production.up.railway.app/traerSolicitudesPendientes");
+        const response = await fetch("/api/traerSolicitudesPendientes");
         const result = await response.json();
         console.log(result);
         if (response.ok) {
@@ -31,7 +31,7 @@ function NewSolicitudes() {
   
   const handleAceptarSolicitud = async (solicitud) => {
     try {
-      const response = await fetch("https://reposistemasback-production.up.railway.app/enviarCorreo", {
+      const response = await fetch("/api/enviarCorreo", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -71,7 +71,7 @@ function NewSolicitudes() {
     
     if (resultado.isConfirmed) {
       try {
-        const response = await fetch("https://reposistemasback-production.up.railway.app/rechazarSolicitud", {
+        const response = await fetch("/api/rechazarSolicitud", {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",

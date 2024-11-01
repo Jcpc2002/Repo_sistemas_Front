@@ -22,7 +22,7 @@ export const Login = () => {
     };
   
     try {
-      const response = await axios.post("/api/login", body, {
+      const response = await axios.post("https://reposistemasback-production.up.railway.app/login", body, {
         headers: {
           "content-Type": "application/json",
         },

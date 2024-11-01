@@ -21,7 +21,7 @@ function EnviarSolicitud() {
 
     try {
       const response = await axios.post(
-        "/api/enviarSolicitud",
+        "https://reposistemasback-production.up.railway.app/enviarSolicitud",
         body,
         {
           headers: {

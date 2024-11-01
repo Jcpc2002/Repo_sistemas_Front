@@ -6,7 +6,7 @@ import { PDFDocument, rgb } from "pdf-lib";
 function GenerarInforme() {
   const generaInforme = async () => {
     try {
-      const response = await fetch("https://reposistemasback-production.up.railway.app/informe", {
+      const response = await fetch("/api/informe", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

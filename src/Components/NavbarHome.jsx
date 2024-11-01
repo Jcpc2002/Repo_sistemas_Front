@@ -11,6 +11,15 @@ export const NavbarHome = () => {
   const navigate = useNavigate();
   const [showMenu, SetShowMenu] = useState(false);
   const nombre = localStorage.getItem("nombre");
+
+  const handleLogout = () => {
+    // Borra el token de la cookie
+    document.cookie = "access_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    
+    // Redirige al usuario a la página de inicio
+    navigate("/");
+  };
+
   return (
     <React.Fragment>
       <div
@@ -113,12 +122,12 @@ export const NavbarHome = () => {
             </NavLink>
           </nav>
           <div className="flex justify-center my-4">
-            <Link
-              to="/"
+            <button
+              onClick={handleLogout} // Llama a handleLogout al hacer clic
               className="bg-red-600 py-1 px-4 rounded-full text-white"
             >
               Salir
-            </Link>
+            </button>
           </div>
         </div>
       </div>

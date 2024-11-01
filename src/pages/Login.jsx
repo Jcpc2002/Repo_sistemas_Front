@@ -26,6 +26,7 @@ export const Login = () => {
         headers: {
           "content-Type": "application/json",
         },
+        withCredentials: true,
       });
   
       console.log(response.data);

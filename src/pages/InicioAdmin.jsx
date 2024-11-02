@@ -18,7 +18,9 @@ export default function () {
 
   const fetchCategorias = async () => {
     try {
-      const response = await fetch("https://reposistemasback-production.up.railway.app/traerCategoria");
+      const response = await fetch("https://reposistemasback-production.up.railway.app/traerCategoria",{
+        credentials: "include",
+      });
       if (response.ok) {
         const data = await response.json();
 

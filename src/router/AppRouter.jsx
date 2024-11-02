@@ -19,7 +19,6 @@ import NuevaContra from "../pages/NuevaContra";
 import EditarDoc from "../pages/EditarDoc";
 import EnviarDocumento from "../pages/EnviarDocumento";
 import SubirDocAlumno from "../pages/SubirDocAlumno";
-import ProtectedRoute from "../Components/ProtectedRoute";
 
 const AppRouter = () => {
   return (
@@ -34,7 +33,7 @@ const AppRouter = () => {
         </Route>
         <Route path="login" element={<Login />} />
         <Route path="olvidaste-contraseña" element={<NuevaContra />} />
-        <Route path="homeAdmin" element={<ProtectedRoute><HomeAdmin /></ProtectedRoute>}>
+        <Route path="homeAdmin" element={<HomeAdmin />}>
           <Route path="crear-categoria" element={<CreateCategory />} />
           <Route path="perfil" element={<Perfil />} />
           <Route path="actualizar-contraseña" element={<NuevaContraena />} />

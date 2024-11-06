@@ -1,3 +1,3 @@
 export * from './Home';
-export * from './HomeAdmin';
+export { default as HomeAdmin } from './HomeAdmin';
 export * from './Login';

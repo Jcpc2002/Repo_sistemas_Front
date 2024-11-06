@@ -2,8 +2,9 @@ import React from "react";
 import { NavbarHome } from "../Components/NavbarHome";
 import { HeaderHome } from "../Components/HeaderHome";
 import { Outlet } from "react-router-dom";
+import withAuthCheck from "../Components/withAuthCheck";
 
-export const HomeAdmin = () => {
+const HomeAdmin = () => {
   return (
       <div className="grid lg:grid-cols-4 xl:grid-cols-6">
         <NavbarHome />
@@ -16,3 +17,5 @@ export const HomeAdmin = () => {
       </div>
   );
 };
+
+export default withAuthCheck(HomeAdmin);

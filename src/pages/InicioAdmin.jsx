@@ -2,9 +2,8 @@ import { Titulo } from "../Components/Titulo";
 import { CategoriasAdmin } from "../Components/CategoriasAdmin";
 import { useState, useEffect } from "react";
 import ListDocumentos from "./ListDocumentos";
-import withAuthCheck from "../Components/withAuthCheck";
 
-function vistaAdmin() {
+export default function () {
   
   const [categorias, setCategorias] = useState([]);
   const numCategories = categorias.length;
@@ -71,4 +70,3 @@ function vistaAdmin() {
     </div>
   );
 }
-export default withAuthCheck(vistaAdmin);

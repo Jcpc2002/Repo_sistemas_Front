@@ -6,20 +6,21 @@ import { MdDocumentScanner, MdModeEdit } from "react-icons/md";
 import { IoMdMore, IoMdClose } from "react-icons/io";
 import { IoCreate, IoAccessibility } from "react-icons/io5";
 import { HiDocumentArrowUp } from "react-icons/hi2";
+import axios from "axios";
 
 export const NavbarHome = () => {
   const navigate = useNavigate();
   const [showMenu, SetShowMenu] = useState(false);
   const nombre = localStorage.getItem("nombre");
 
-  const handleLogout = () => {
-    // Borra el token de la cookie
-    document.cookie = "access_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    
-    // Redirige al usuario a la página de inicio
-    navigate("/");
+  const handleLogout = async () => {
+    try {
+      await axios.get("https://reposistemasback-production.up.railway.app/logout", { withCredentials: true });
+      navigate("/"); 
+    } catch (error) {
+      console.error("Error al cerrar sesión:", error);
+    }
   };
-
   return (
     <React.Fragment>
       <div

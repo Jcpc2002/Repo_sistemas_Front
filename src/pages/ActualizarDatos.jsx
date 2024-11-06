@@ -81,23 +81,7 @@ export default function ActualizarDatos() {
           onSubmit={handleSubmit}
           className="flex flex-col items-center gap-6 md:items-start md:w-full md:gap-10"
         >
-          <div className="flex items-center flex-col md:flex-row">
-            <label
-              htmlFor="imagen"
-              className="cursor-pointer bg-blue-500 text-white font-bold py-2 px-4 rounded-lg shadow-md hover:bg-blue-700 transition duration-300"
-            >
-              Seleccionar foto de perfil
-            </label>
-            <input
-              type="file"
-              id="imagen"
-              name="imagen"
-              accept="image/*"
-              className="hidden"
-              onChange={handleFileChange}
-            />
-            <span className="ml-3 text-gray-600">{fileName}</span>
-          </div>
+         
           <div className="flex flex-col items-center md:flex-row md:w-full md:items-start">
             <p className="text-lg md:w-[30%]">Nombre:</p>
             <input

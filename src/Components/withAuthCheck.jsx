@@ -6,3 +6,5 @@ const withAuthCheck = (WrappedComponent) => {
       return <WrappedComponent {...props} />;
     };
   };
+
+export default withAuthCheck;

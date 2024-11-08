@@ -24,13 +24,13 @@ function ListSolicitudes() {
         <div className="w-[100%] flex flex-col items-center gap-4">
           <div className="flex gap-6">
             <button
-              className={activeTab === "nuevas" ? "bg-blue-400 rounded-md px-3 py-1 font-bold text-white" : ""}
+              className={activeTab === "nuevas" ? "bg-blue-700 rounded-md px-3 py-1 font-bold text-white" : ""}
               onClick={() => setActiveTab("nuevas")}
             >
               Nuevas solicitudes
             </button>
             <button
-              className={activeTab === "aceptadas" ? "bg-blue-400 rounded-md px-3 py-1 font-bold text-white" : ""}
+              className={activeTab === "aceptadas" ? "bg-blue-700 rounded-md px-3 py-1 font-bold text-white" : ""}
               onClick={() => setActiveTab("aceptadas")}
             >
               Solicitudes aceptadas

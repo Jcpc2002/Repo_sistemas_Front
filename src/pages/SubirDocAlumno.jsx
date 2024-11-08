@@ -150,6 +150,7 @@ export default function SubirDocAlumno() {
                 required
                 type="text"
                 name="nombre"
+                placeholder="Dígite el nombre del documento"
                 className="w-60 md:w-80 h-full bg-white outline-none border border-slate-400 rounded-md p-1 pl-5 pr-9 text-gray-900"
               />
             </div>
@@ -194,6 +195,7 @@ export default function SubirDocAlumno() {
               value={input4}
               required
               name="miembros"
+              placeholder="Ingrese los integrantes del documento"
               className="resize-none w-60 md:w-80 border border-slate-400 rounded-md h-20 pl-2 pr-2 text-sm pt-2"
             />
           </div>
@@ -249,10 +251,10 @@ export default function SubirDocAlumno() {
               />
             </div>
           </div>
-          <div className="flex flex-col items-center md:flex-row md:w-full md:items-start">
+          <div className="flex flex-col items-center justify-center md:flex-row md:w-full md:items-start">
             <button
               type="submit"
-              className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
+              className="bg-emerald-900 text-white py-2 px-4 rounded-md hover:bg-emerald-950"
               disabled={!isValid}
             >
               Subir

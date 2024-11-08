@@ -60,9 +60,6 @@ export const Login = () => {
       <div className="max-w-96 bg-white p-6 text-gray-900 border border-slate-300 rounded-lg shadow-2xl">
         <form onSubmit={handleSubmit}>
           <div className="flex gap-4">
-            <picture className="max-w-20">
-              <img src={logo} alt="Logo UFPS" className="w-full rounded-md" />
-            </picture>
             <h2 className="text-lg uppercase font-bold">
               Repositorio digital ingeniería de sistemas UFPS
             </h2>
@@ -115,7 +112,7 @@ export const Login = () => {
             </Link>
             <button
               type="submit"
-              className="w-full h-11 bg-emerald-600 text-slate-50 rounded-md text-lg hover:bg-emerald-500"
+              className="w-full h-11 bg-emerald-900 text-slate-50 rounded-md text-lg hover:bg-emerald-950"
             >
               Ingresar
             </button>

@@ -171,6 +171,7 @@ function EditarCategoria() {
                 type="text"
                 className="w-60 md:w-80 h-full bg-white outline-none border border-slate-400 rounded-md p-1 pl-5 pr-9 text-gray-900"
                 value={nombreCategoria}
+                placeholder="Dígite el nuevo nombre"
                 onChange={handleNombreChange}
               />
             </div>
@@ -179,13 +180,14 @@ function EditarCategoria() {
               <textarea
                 className="resize-none w-60 md:w-80 border border-slate-400 rounded-md h-20 pl-2 pr-2 text-sm pt-2"
                 value={descripcionCategoria}
+                placeholder="Dígite la nueva descripción para la categoría"
                 onChange={handleDescripcionChange}
               />
             </div>
             <div className="flex justify-center w-full">
               <button
                 type="submit"
-                className="bg-emerald-600 text-white px-3 py-1 rounded-md mt-4"
+                className="bg-emerald-900 text-white px-3 py-1 rounded-md mt-4"
               >
                 Guardar cambios
               </button>
@@ -194,7 +196,7 @@ function EditarCategoria() {
         </div>
         <button
           onClick={handleConfirmDelete}
-          className="bg-red-600 text-white px-3 py-1 rounded-md mt-4"
+          className="bg-red-700 text-white px-3 py-1 rounded-md mt-4"
         >
           Eliminar categoría
         </button>

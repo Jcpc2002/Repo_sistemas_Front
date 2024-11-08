@@ -126,15 +126,6 @@ export default function EnviarDocumento() {
       <div>
         <div className="w-full relative hidden md:block">
           <img src={banner} alt="banner" className="w-full" />
-          <div className="absolute inset-0 flex flex-col gap-1 pr-8 justify-center">
-            <h1 className="text-white text-5xl text-right font-bold">
-              Repositorio Digital
-            </h1>
-            <h1 className="text-white text-4xl text-right font-bold">
-              Programa Ingeniería de Sistemas{" "}
-              <span className="text-5xl text-red-600">UFPS</span>
-            </h1>
-          </div>
         </div>
         <div className="flex flex-col items-center gap-3 pt-4 pb-4 bg-gray-100">
           <div className="w-[90%] border border-slate-300 p-4 flex flex-col items-center gap-6 rounded-md bg-white">
@@ -153,6 +144,7 @@ export default function EnviarDocumento() {
                     value={codigousuario}
                     onChange={(e) => setCodigo(e.target.value)}
                     type="text"
+                    placeholder="Dígite su código de estudiante"
                     className="w-60 md:w-96 h-full bg-white outline-none border border-slate-400 rounded-md p-1 pl-5 pr-9 text-gray-900"
                   />
                 </div>
@@ -161,7 +153,7 @@ export default function EnviarDocumento() {
                 <div className="flex items-center md:flex-row md:w-full justify-center">
                   <button
                     type="submit"
-                    className="bg-emerald-600 text-white px-3 py-1 rounded-md mt-4 items-center"
+                    className="bg-emerald-900 text-white px-3 py-1 rounded-md mt-4 items-center"
                   >
                     Enviar
                   </button>
@@ -170,7 +162,7 @@ export default function EnviarDocumento() {
               <p>Debes autenticarte con Google para poder subir el archivo.</p>
               <button
                 onClick={login}
-                className="mt-6 bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600"
+                className="mt-6 bg-green-700 text-white py-2 px-4 rounded-md hover:bg-green-600"
               >
                 Autenticar con Google
               </button>

@@ -27,8 +27,8 @@ export default function Perfil() {
           <p className="text-xl">{codigo}</p>
         </div>
         <div className="flex flex-col gap-4 items-center md:flex-row md:gap-10"> 
-          <Link to="/homeAdmin/actualizar-datos" className="bg-emerald-600 text-white px-3 py-1 rounded-md mt-4">Actualizar datos</Link>
-          <Link to="/homeAdmin/actualizar-contraseña" className="bg-emerald-600 text-white px-3 py-1 rounded-md mt-4">Actualizar contraseña</Link>
+          <Link to="/homeAdmin/actualizar-datos" className="bg-emerald-900 text-white px-3 py-1 rounded-md mt-4">Actualizar datos</Link>
+          <Link to="/homeAdmin/actualizar-contraseña" className="bg-emerald-900 text-white px-3 py-1 rounded-md mt-4">Actualizar contraseña</Link>
         </div>
       </div>
     </div>

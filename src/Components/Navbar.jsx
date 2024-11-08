@@ -48,36 +48,30 @@ export const Navbar = () => {
 
   return (
     <div>
-      <div className="bg-blue-950 p-3 flex justify-center gap-2 flex-wrap md:justify-end md:gap-6">
+      <div className="bg-[#07244C] p-3 flex justify-center gap-2 flex-wrap md:justify-end md:gap-6">
         <Link
           to="enviar-solicitud"
-          className="text-white font-bold bg-blue-900 px-2 md:px-3 py-1 rounded-md text-center"
+          className="text-[#07244C] font-bold bg-[#FFC107] px-2 md:px-3 py-1 rounded-md text-center"
         >
           Enviar solicitud
         </Link>
         <Link
           to="login"
-          className="text-white font-bold bg-blue-900 px-2 md:px-3 py-1 rounded-md text-center"
+          className="text-[#07244C] font-bold bg-[#FFC107] px-2 md:px-3 py-1 rounded-md text-center"
         >
           Iniciar sesión
         </Link>
         <Link
           to="/"
-          className="text-white font-bold bg-blue-900 px-2 md:px-3 py-1 rounded-md text-center"
+          className="text-[#07244C] font-bold bg-[#FFC107] px-2 md:px-3 py-1 rounded-md text-center"
         >
           Inicio
         </Link>
       </div>
-      <div className="w-full relative hidden md:block">
-        <img src={banner} alt="banner" className="w-full" />
+      <div className="w-full relative hidden md:block md:overflow-hidden">
+        <img src={banner} alt="banner" className="w-full h-auto block" />
         <div class="absolute inset-0 flex flex-col gap-1 pr-8 justify-center">
-          <h1 class="text-white text-5xl text-right font-bold">
-            Repositorio Digital
-          </h1>
-          <h1 class="text-white text-4xl text-right font-bold">
-            Programa Ingeniería de Sistemas{" "}
-            <span className="text-5xl text-red-600">UFPS</span>
-          </h1>
+
         </div>
       </div>
     </div>

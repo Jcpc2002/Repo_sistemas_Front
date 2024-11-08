@@ -60,6 +60,7 @@ export const CreateCategory = () => {
               value={nombre}
               onChange={(e) => setNombre(e.target.value)}
               type="text"
+              placeholder="Dígite el nombre de la categoría que desea crear"
               className="w-60 md:w-80 h-full bg-white outline-none border border-slate-400 rounded-md p-1 pl-5 pr-9 text-gray-900"
             />
           </div>
@@ -69,13 +70,14 @@ export const CreateCategory = () => {
               required
               value={descripcion}
               onChange={(e) => setDescripcion(e.target.value)}
+              placeholder="Escriba la descripción de la categoría que desea crear"
               className="resize-none w-60 md:w-80 border border-slate-400 rounded-md h-20 pl-2 pr-2 text-sm pt-2"
             />
           </div>
           <div className="flex justify-center w-full">
             <button
               type="sumbit"
-              className="bg-emerald-600 text-white px-3 py-1 rounded-md mt-4"
+              className="bg-emerald-900 text-white px-3 py-1 rounded-md mt-4"
             >
               Crear categoría
             </button>

@@ -80,7 +80,7 @@ function SolicitudesAceptadas() {
                   <div className="flex justify-center gap-3">
                     <Link
                       to={`/homeAdmin/subir-doc-solicitudes/${solicitud.id}`}
-                      className="bg-green-500 text-white p-2 rounded-md"
+                      className="bg-emerald-600 text-white p-2 rounded-md"
                       state={{
                         archivo: solicitud.archivo,
                         descripcion: solicitud.descripcion

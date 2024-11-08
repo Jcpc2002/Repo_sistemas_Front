@@ -103,7 +103,7 @@ function GenerarInforme() {
           Generar informe con toda la información relevante del aplicativo web
         </p>
         <button
-          className="bg-emerald-600 text-white px-3 py-1 rounded-md"
+          className="bg-emerald-900 text-white px-3 py-1 rounded-md"
           onClick={generaInforme}
         >
           Generar

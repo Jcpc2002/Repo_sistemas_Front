@@ -24,11 +24,11 @@ export const NavbarHome = () => {
   return (
     <React.Fragment>
       <div
-        className={`bg-violet-950 min-h-screen flex flex-col items-center gap-3 fixed lg:static w-[80%] md:w-[40%] lg:w-full transition-all z-50 duration-300 ${
+        className={`bg-[#07244C] min-h-screen flex flex-col items-center gap-3 fixed lg:static w-[80%] md:w-[40%] lg:w-full transition-all z-50 duration-300 ${
           showMenu ? "left-0" : "-left-full"
         }`}
       >
-        <h3 className="text-white m-2 py-1 px-3 bg-blue-900 rounded-lg">
+        <h3 className="text-white m-2 py-1 px-3 bg-[#2a2870] rounded-lg">
           Usuario administrador
         </h3>
         <div className="flex flex-col items-center gap-2">
@@ -48,8 +48,8 @@ export const NavbarHome = () => {
               to="/homeAdmin/inicio-administrador"
               className={({ isActive }) =>
                 isActive
-                  ? "flex items-center gap-2 text-white bg-rose-500 py-1 px-4 w-48 rounded-lg text-sm transition-colors"
-                  : "flex items-center gap-2 text-white bg-violet-800 py-1 px-4 w-48 rounded-lg text-sm hover:bg-violet-600 transition-colors"
+                  ? "flex items-center gap-2 text-[#07244C] font-bold bg-[#FFC107] py-1 px-4 w-48 rounded-lg text-base transition-colors"
+                  : "flex items-center gap-2 text-white bg-[#7671FA] py-1 px-4 w-48 rounded-lg text-base hover:bg-violet-600 transition-colors"
               }
             >
               <IoAccessibility />
@@ -59,8 +59,8 @@ export const NavbarHome = () => {
               to="/homeAdmin/perfil"
               className={({ isActive }) =>
                 isActive
-                  ? "flex items-center gap-2 text-white bg-rose-500 py-1 px-4 w-48 rounded-lg text-sm transition-colors"
-                  : "flex items-center gap-2 text-white bg-violet-800 py-1 px-4 w-48 rounded-lg text-sm hover:bg-violet-600 transition-colors"
+                  ? "flex items-center gap-2 text-[#07244C] font-bold bg-[#FFC107] py-1 px-4 w-48 rounded-lg text-base transition-colors"
+                  : "flex items-center gap-2 text-white bg-[#7671FA] py-1 px-4 w-48 rounded-lg text-base hover:bg-violet-600 transition-colors"
               }
             >
               <FaUser />
@@ -70,8 +70,8 @@ export const NavbarHome = () => {
               to="/homeAdmin/crear-categoria"
               className={({ isActive }) =>
                 isActive
-                  ? "flex items-center gap-2 text-white bg-rose-500 py-1 px-4 w-48 rounded-lg text-sm transition-colors"
-                  : "flex items-center gap-2 text-white bg-violet-800 py-1 px-4 w-48 rounded-lg text-sm hover:bg-violet-600 transition-colors"
+                  ? "flex items-center gap-2 text-[#07244C] font-bold bg-[#FFC107] py-1 px-4 w-48 rounded-lg text-base transition-colors"
+                  : "flex items-center gap-2 text-white bg-[#7671FA] py-1 px-4 w-48 rounded-lg text-base hover:bg-violet-600 transition-colors"
               }
             >
               <IoCreate />
@@ -81,8 +81,8 @@ export const NavbarHome = () => {
               to="/homeAdmin/editar-categoria"
               className={({ isActive }) =>
                 isActive
-                  ? "flex items-center gap-2 text-white bg-rose-500 py-1 px-4 w-48 rounded-lg text-sm transition-colors"
-                  : "flex items-center gap-2 text-white bg-violet-800 py-1 px-4 w-48 rounded-lg text-sm hover:bg-violet-600 transition-colors"
+                  ? "flex items-center gap-2 text-[#07244C] font-bold bg-[#FFC107] py-1 px-4 w-48 rounded-lg text-base transition-colors"
+                  : "flex items-center gap-2 text-white bg-[#7671FA] py-1 px-4 w-48 rounded-lg text-base hover:bg-violet-600 transition-colors"
               }
             >
               <MdModeEdit />
@@ -92,8 +92,8 @@ export const NavbarHome = () => {
               to="/homeAdmin/lista-solicitudes"
               className={({ isActive }) =>
                 isActive
-                  ? "flex items-center gap-2 text-white bg-rose-500 py-1 px-4 w-48 rounded-lg text-sm transition-colors"
-                  : "flex items-center gap-2 text-white bg-violet-800 py-1 px-4 w-48 rounded-lg text-sm hover:bg-violet-600 transition-colors"
+                  ? "flex items-center gap-2 text-[#07244C] font-bold bg-[#FFC107] py-1 px-4 w-48 rounded-lg text-base transition-colors"
+                  : "flex items-center gap-2 text-white bg-[#7671FA] py-1 px-4 w-48 rounded-lg text-base hover:bg-violet-600 transition-colors"
               }
             >
               <FaUserEdit />
@@ -103,8 +103,8 @@ export const NavbarHome = () => {
               to="/homeAdmin/subir-documento"
               className={({ isActive }) =>
                 isActive
-                  ? "flex items-center gap-2 text-white bg-rose-500 py-1 px-4 w-48 rounded-lg text-sm transition-colors"
-                  : "flex items-center gap-2 text-white bg-violet-800 py-1 px-4 w-48 rounded-lg text-sm hover:bg-violet-600 transition-colors"
+                  ? "flex items-center gap-2 text-[#07244C] font-bold bg-[#FFC107] py-1 px-4 w-48 rounded-lg text-base transition-colors"
+                  : "flex items-center gap-2 text-white bg-[#7671FA] py-1 px-4 w-48 rounded-lg text-base hover:bg-violet-600 transition-colors"
               }
             >
               <HiDocumentArrowUp />
@@ -114,8 +114,8 @@ export const NavbarHome = () => {
               to="/homeAdmin/generar-informe"
               className={({ isActive }) =>
                 isActive
-                  ? "flex items-center gap-2 text-white bg-rose-500 py-1 px-4 w-48 rounded-lg text-sm transition-colors"
-                  : "flex items-center gap-2 text-white bg-violet-800 py-1 px-4 w-48 rounded-lg text-sm hover:bg-violet-600 transition-colors"
+                  ? "flex items-center gap-2 text-[#07244C] font-bold bg-[#FFC107] py-1 px-4 w-48 rounded-lg text-base transition-colors"
+                  : "flex items-center gap-2 text-white bg-[#7671FA] py-1 px-4 w-48 rounded-lg text-base hover:bg-violet-600 transition-colors"
               }
             >
               <MdDocumentScanner />
@@ -125,7 +125,7 @@ export const NavbarHome = () => {
           <div className="flex justify-center my-4">
             <button
               onClick={handleLogout} // Llama a handleLogout al hacer clic
-              className="bg-red-600 py-1 px-4 rounded-full text-white"
+              className="bg-red-700 py-1 px-4 rounded-full text-white"
             >
               Salir
             </button>

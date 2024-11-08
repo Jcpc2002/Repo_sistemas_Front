@@ -354,21 +354,21 @@ export default function editarDocumento() {
               <button
                 type="button"
                 onClick={() => login()}
-                className="bg-blue-500 text-white px-4 py-2 rounded-md mr-4"
+                className="bg-blue-700 text-white px-4 py-2 rounded-md mr-4"
               >
                 Autenticarse con Google
               </button>
               
               <button
                 type="submit"
-                className="bg-green-500 text-white px-4 py-2 rounded-md"
+                className="bg-green-900 text-white px-4 py-2 rounded-md"
               >
                 Enviar
               </button>
             </div>
-            <div>
+            <div className="flex items-center justify-center w-full">
               <Link to={`/homeAdmin/documento/${id}`}>
-                <button className="bg-red-500 text-white px-4 py-2 rounded-md">
+                <button className="bg-red-700 text-white px-4 py-2 rounded-md">
                   Regresar
                 </button>
               </Link>

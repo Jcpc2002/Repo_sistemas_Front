@@ -67,7 +67,7 @@ function DocsUser() {
   }
 
   return (
-    <div className="flex flex-col items-center pt-6 pb-6">
+    <div className="flex flex-col items-center pt-6 pb-6 bg-gray-100">
       <Titulo name="Documento" />
       <div className="border border-slate-300 mt-6 flex flex-col p-6 w-[80%] items-center gap-4 rounded-md bg-white">
         <h2 className="text-xl text-center font-bold">{documento.nombre}</h2>
@@ -108,7 +108,7 @@ function DocsUser() {
         </div>
         <Link
           to={`/lista-docs/${documento.tipodocumento}`}
-          className="bg-red-600 text-white py-2 px-4 rounded-md mt-10"
+          className="bg-red-700 text-white py-2 px-4 rounded-md mt-10"
         >
           Volver
         </Link>

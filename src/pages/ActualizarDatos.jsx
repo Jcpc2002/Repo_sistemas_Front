@@ -104,13 +104,13 @@ export default function ActualizarDatos() {
             <div className="flex gap-6">
               <Link
                 to="/homeAdmin/perfil"
-                className="bg-red-600 text-white px-3 py-1 rounded-md mt-4"
+                className="bg-red-700 text-white px-3 py-1 rounded-md mt-4"
               >
                 Volver
               </Link>
               <button
                 type="submit"
-                className="bg-emerald-600 text-white px-3 py-1 rounded-md mt-4"
+                className="bg-emerald-900 text-white px-3 py-1 rounded-md mt-4"
               >
                 Actualizar
               </button>

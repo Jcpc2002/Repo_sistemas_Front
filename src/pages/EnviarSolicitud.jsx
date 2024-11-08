@@ -63,8 +63,8 @@ function EnviarSolicitud() {
   };
 
   return (
-    <div className="flex flex-col items-center gap-3 pt-4 pb-4 bg-gray-100">
-      <div className="w-[90%] border border-slate-300 p-4 flex flex-col items-center gap-6 rounded-md bg-white">
+    <div className="flex flex-col items-center gap-3 pt-4 pb-4 bg-[#7E7F9C]">
+      <div className="w-[90%] border border-slate-300 p-4 flex flex-col items-center gap-6 rounded-md bg-slate-100">
         <Titulo name="Enviar Solicitud" />
         <div className="flex flex-col items-center gap-6 border border-slate-300 w-full py-10 shadow-md px-10">
           <form
@@ -78,6 +78,7 @@ function EnviarSolicitud() {
                 value={nombre}
                 onChange={(e) => setNombre(e.target.value)}
                 type="text"
+                placeholder="Dígite su nombre"
                 className="w-60 md:w-96 h-full bg-white outline-none border border-slate-400 rounded-md p-1 pl-5 pr-9 text-gray-900"
               />
             </div>
@@ -88,6 +89,7 @@ function EnviarSolicitud() {
                 value={codigousuario}
                 onChange={(e) => setCodigo(e.target.value)}
                 type="text"
+                placeholder="Dígite su código"
                 className="w-60 md:w-96 h-full bg-white outline-none border border-slate-400 rounded-md p-1 pl-5 pr-9 text-gray-900"
               />
             </div>
@@ -100,6 +102,7 @@ function EnviarSolicitud() {
                 value={correo}
                 onChange={(e) => setCorreo(e.target.value)}
                 type="email"
+                placeholder="Dígite su correo institucional"
                 className="w-60 md:w-96 h-full bg-white outline-none border border-slate-400 rounded-md p-1 pl-5 pr-9 text-gray-900"
               />
             </div>
@@ -115,7 +118,7 @@ function EnviarSolicitud() {
             </div>
             <button
               type="sumbit"
-              className="bg-emerald-600 text-white px-3 py-1 rounded-md mt-4"
+              className="bg-emerald-900 text-white px-3 py-1 rounded-md mt-4"
             >
               Enviar
             </button>

@@ -119,7 +119,7 @@ export default function ListDocumentos() {
           <div>
             <Link
               to="/homeAdmin/inicio-administrador"
-              className="bg-red-600 text-white py-2 px-4 rounded-md"
+              className="bg-red-700 text-white py-2 px-4 rounded-md"
             >
               Volver
             </Link>
@@ -131,9 +131,9 @@ export default function ListDocumentos() {
               type="text"
               className="w-[70%] md:w-[40%] border border-slate-500 rounded-md pl-3 pr-3"
               onChange={ (e)=> buscar(e.target.value)}
-
+              placeholder="Buscar documento"
             />
-            <button className="bg-emerald-600 text-white px-3 py-1 rounded-md">
+            <button className="bg-emerald-900 text-white px-3 py-1 rounded-md">
               Buscar
             </button>
           </form>

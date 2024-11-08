@@ -61,6 +61,7 @@ export default function NuevaContraena() {
               type="text"
               value={codigo}
               onChange={(e) => setCodigo(e.target.value)}
+              placeholder="Ingrese su código institucional"
               className="w-60 md:w-80 h-full bg-white outline-none border border-slate-400 rounded-md p-1 pl-5 pr-9 text-gray-900"
             />
           </div>
@@ -71,6 +72,7 @@ export default function NuevaContraena() {
               type="password"
               value={contrasena}
               onChange={(e) => setContrasena(e.target.value)}
+              placeholder="Ingrese su nueva contraseña"
               className="w-60 md:w-80 h-full bg-white outline-none border border-slate-400 rounded-md p-1 pl-5 pr-9 text-gray-900"
             />
           </div>
@@ -78,13 +80,13 @@ export default function NuevaContraena() {
             <div className="flex gap-6">
               <Link
                 to="/homeAdmin/perfil"
-                className="bg-red-600 text-white px-3 py-1 rounded-md mt-4"
+                className="bg-red-700 text-white px-3 py-1 rounded-md mt-4"
               >
                 Volver
               </Link>
               <button
                 type="submit"
-                className="bg-emerald-600 text-white px-3 py-1 rounded-md mt-4"
+                className="bg-emerald-900 text-white px-3 py-1 rounded-md mt-4"
               >
                 Actualizar
               </button>

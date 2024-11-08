@@ -163,7 +163,7 @@ function Document() {
           <div className="flex gap-6">
             <button
               onClick={handleDeleteClick}
-              className="bg-red-600 text-white px-3 py-1 rounded-md mt-4"
+              className="bg-red-700 text-white px-3 py-1 rounded-md mt-4"
             >
               Eliminar documento
             </button>
@@ -174,7 +174,7 @@ function Document() {
             />
             <Link
               to={`/homeAdmin/editar-documento/${documento.id}`}
-              className="bg-emerald-600 text-white px-3 py-1 rounded-md mt-4"
+              className="bg-emerald-900 text-white px-3 py-1 rounded-md mt-4"
               state={{
                 nombre: documento.nombre,
                 descripcion: documento.descripcion,
@@ -188,7 +188,7 @@ function Document() {
         </div>
         <Link
           to={`/homeAdmin/lista-documentos/${documento.tipodocumento}`}
-          className="bg-red-600 text-white py-2 px-4 rounded-md mt-10"
+          className="bg-red-700 text-white py-2 px-4 rounded-md mt-10"
         >
           Volver
         </Link>

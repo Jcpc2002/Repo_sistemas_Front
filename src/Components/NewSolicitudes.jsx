@@ -132,7 +132,7 @@ function NewSolicitudes() {
                     >
                       <FaCheck />
                     </button>
-                    <button className="bg-red-500 text-white p-2 rounded-full"
+                    <button className="bg-red-700 text-white p-2 rounded-full"
                       onClick={() => handleRechazarSolicitud(solicitud)}
                     >
                       <IoClose />

@@ -107,7 +107,7 @@ function ListDocsUser() {
   }
 
   return (
-    <div className="flex flex-col items-center pt-6 pb-6">
+    <div className="flex flex-col items-center pt-6 pb-6 bg-gray-100">
       <Titulo name={categoria.nombre}/>
       <div className="border border-slate-300 mt-6 flex flex-col p-6 w-[80%] items-center gap-4 rounded-md bg-white">
         <div className="w-[100%] flex justify-between">
@@ -120,7 +120,7 @@ function ListDocsUser() {
           <div>
             <Link
               to="/"
-              className="bg-red-600 text-white py-2 px-4 rounded-md"
+              className="bg-red-700 text-white py-2 px-4 rounded-md"
             >
               Volver
             </Link>
@@ -132,9 +132,9 @@ function ListDocsUser() {
               type="text"
               className="w-[70%] md:w-[40%] border border-slate-500 rounded-md pl-3 pr-3"
               onChange={ (e)=> buscar(e.target.value)}
-
+              placeholder="Buscar documento"
             />
-            <button className="bg-emerald-600 text-white px-3 py-1 rounded-md">
+            <button className="bg-emerald-900 text-white px-3 py-1 rounded-md">
               Buscar
             </button>
           </form>

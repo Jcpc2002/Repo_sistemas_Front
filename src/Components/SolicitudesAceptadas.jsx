@@ -47,6 +47,7 @@ function SolicitudesAceptadas() {
               <th className="py-2 px-4 border-b w-[15%]">Código</th>
               <th className="py-2 px-4 border-b w-[15%]">Nombre</th>
               <th className="py-2 px-4 border-b w-[15%]">Correo</th>
+              <th className="py-2 px-4 border-b w-[15%]">Proyecto</th>
               <th className="py-2 px-4 border-b w-[40%]">Archivos</th>
               <th className="py-2 px-4 border-b w-[15%]">Acción</th>
             </tr>
@@ -61,6 +62,7 @@ function SolicitudesAceptadas() {
                 <td className="py-2 px-4 border-b break-all">
                   {solicitud.correo}
                 </td>
+                <td className="py-2 px-4 border-b">{solicitud.nombreproyecto}</td>
                 <td className="py-2 px-4 border-b text-left">
                   <div className="flex justify-center gap-2">
                     {solicitud.archivo ? (
@@ -83,7 +85,8 @@ function SolicitudesAceptadas() {
                       className="bg-emerald-600 text-white p-2 rounded-md"
                       state={{
                         archivo: solicitud.archivo,
-                        descripcion: solicitud.descripcion
+                        descripcion: solicitud.descripcion,
+                        nombreproyecto: solicitud.nombreproyecto,
                       }}
                     >
                       Enviar

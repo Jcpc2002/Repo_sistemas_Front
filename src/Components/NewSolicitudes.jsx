@@ -113,6 +113,7 @@ function NewSolicitudes() {
               <th className="py-2 px-4 border-b w-[15%]">Código</th>
               <th className="py-2 px-4 border-b w-[15%]">Nombre</th>
               <th className="py-2 px-4 border-b w-[15%]">Correo</th>
+              <th className="py-2 px-4 border-b w-[15%]">Proyecto</th>
               <th className="py-2 px-4 border-b w-[40%]">Descripción</th>
               <th className="py-2 px-4 border-b w-[15%]">Acción</th>
             </tr>
@@ -123,6 +124,7 @@ function NewSolicitudes() {
                 <td className="py-2 px-4 border-b">{solicitud.codigousuario}</td>
                 <td className="py-2 px-4 border-b">{solicitud.nombre}</td>
                 <td className="py-2 px-4 border-b break-all">{solicitud.correo}</td>
+                <td className="py-2 px-4 border-b">{solicitud.nombreproyecto}</td>
                 <td className="py-2 px-4 border-b text-center">{solicitud.descripcion}</td>
                 <td className="py-2 px-4 border-b">
                   <div className="flex justify-center gap-3">

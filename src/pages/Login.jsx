@@ -75,6 +75,9 @@ export const Login = () => {
               placeholder="Código"
               value={codigo}
               onChange={(e) => setCodigo(e.target.value)}
+              inputMode="numeric"
+              pattern="[0-9]*"
+              title="Por favor, ingrese solo números en este campo"
               required
               className="w-full h-full outline-none border border-slate-400 rounded-md p-4 pr-9 text-gray-900 placeholder:text-gray-700"
             />

@@ -4,14 +4,13 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import ModalDocument from "../Components/ModalDocument";
 import { useState, useEffect } from "react";
 import axios from "axios";
-
+import ReactLoading from "react-loading";
 
 function DocsUser() {
   const { id } = useParams();
   const [documento, setDocumento] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
 
   useEffect(() => {
     infoDocumento();
@@ -53,9 +52,21 @@ function DocsUser() {
     }
   };
 
-
   if (loading) {
-    return <div>Cargando...</div>;
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+          width: "100%",
+          backgroundColor: "rgba(255, 255, 255, 0.7)",
+        }}
+      >
+        <ReactLoading type="spin" color="#00BFFF" height={100} width={100} />
+      </div>
+    );
   }
 
   if (error) {
@@ -88,23 +99,23 @@ function DocsUser() {
             <h3 className="text-lg font-bold">Semestre</h3>
             <p>{documento.semestre}</p>
           </div>
-          {documento.estado === 1 &&(
-              <div className="flex flex-col gap-1">
-                <h3 className="text-lg font-bold">Archivos</h3>
-                <div className="flex gap-6">
-                  <div className="flex flex-col items-center w-[100px] break-all">
-                    <a
-                      href={documento.archivos}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <IoDocument className="text-4xl" />
-                    </a>
-                    <p className="text-center">Link</p>
-                  </div>
+          {documento.estado === 1 && (
+            <div className="flex flex-col gap-1">
+              <h3 className="text-lg font-bold">Archivos</h3>
+              <div className="flex gap-6">
+                <div className="flex flex-col items-center w-[100px] break-all">
+                  <a
+                    href={documento.archivos}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <IoDocument className="text-4xl" />
+                  </a>
+                  <p className="text-center">Link</p>
                 </div>
               </div>
-            )}
+            </div>
+          )}
         </div>
         <Link
           to={`/lista-docs/${documento.tipodocumento}`}

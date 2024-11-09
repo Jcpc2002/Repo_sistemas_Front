@@ -6,13 +6,13 @@ import { IoDocument } from "react-icons/io5";
 
 export default function SubirDocAlumno() {
   const location = useLocation();
-  const { archivo, descripcion } = location.state || {};
+  const { archivo, descripcion, nombreproyecto } = location.state || {};
 
   const [categorias, setCategorias] = useState([]);
   const [isOn, setIsOn] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [isValid, setIsValid] = useState(true);
-  const [input1, setInput1] = useState("");
+  const [input1, setInput1] = useState(nombreproyecto || "");
   const [input3, setInput3] = useState(descripcion || "");
   const [input4, setInput4] = useState("");
   const [fileLink, setFileLink] = useState(archivo || "");
@@ -23,7 +23,10 @@ export default function SubirDocAlumno() {
     setInputValue(value);
 
     const regex = /^20\d{2}-[12]$/;
-    if (regex.test(value) || value === "") {
+    const currentYear = new Date().getFullYear();
+    const inputYear = parseInt(value.slice(0, 4), 10);
+
+    if (regex.test(value) && inputYear <= currentYear || value === "") {
       setIsValid(true);
     } else {
       setIsValid(false);

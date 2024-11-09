@@ -35,7 +35,10 @@ export default function editarDocumento() {
     setInputValue(value);
 
     const regex = /^20\d{2}-[12]$/;
-    if (regex.test(value) || value === "") {
+    const currentYear = new Date().getFullYear();
+    const inputYear = parseInt(value.slice(0, 4), 10);
+    
+    if (regex.test(value) && inputYear <= currentYear || value === "") {
       setIsValid(true);
     } else {
       setIsValid(false);

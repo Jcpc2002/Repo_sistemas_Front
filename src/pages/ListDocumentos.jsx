@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { FaEye } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
+import ReactLoading from "react-loading";
 
 export default function ListDocumentos() {
   const [documentos, setDocumentos] = useState([]);
@@ -12,16 +13,19 @@ export default function ListDocumentos() {
   const [error, setError] = useState(null);
   const [temp, setTemp] = useState([]);
 
-  function buscar(nombre) {
-    const temp = [...documentos]
-    console.log (temp)
-    console.log(nombre)
-    setTemp(temp.filter((doc)=>doc.nombre.startsWith(nombre)))
-  }
+  function buscar(termino) {
+    const lowerTermino = termino.toLowerCase();
   
+    setTemp(
+      documentos.filter((doc) => 
+        doc.nombre.toLowerCase().includes(lowerTermino) ||
+        doc.semestre.toLowerCase().includes(lowerTermino)
+      )
+    );
+  }
 
   useEffect(() => {
-    // Realizar la solicitud al backend para obtener info
+    
     traerDocumentos();
     infoCategoria();
   }, []);
@@ -30,8 +34,6 @@ export default function ListDocumentos() {
     id,
   };
   console.log(data);
-
-
 
   const infoCategoria = async () => {
     try {
@@ -47,11 +49,14 @@ export default function ListDocumentos() {
       if (response2.status === 200) {
         console.log("Informacion de categoria traida", response2.data);
         // Extraer la categoria de la respuesta y actualizar el estado
-        const  categorias  = response2.data.data;
-        if ( categorias.length > 0) {
+        const categorias = response2.data.data;
+        if (categorias.length > 0) {
           setCategoria(categorias[0]); // Obtener la primer categoria del array
         } else {
-          console.error("La respuesta no contiene categorias:", response2.data.data);
+          console.error(
+            "La respuesta no contiene categorias:",
+            response2.data.data
+          );
           setCategoria(null);
         }
       }
@@ -83,7 +88,10 @@ export default function ListDocumentos() {
           setTemp(documentos);
           setDocumentos(documentos);
         } else {
-          console.error("La respuesta no contiene un array de documentos:", response.data);
+          console.error(
+            "La respuesta no contiene un array de documentos:",
+            response.data
+          );
           setDocumentos([]);
         }
       }
@@ -94,7 +102,20 @@ export default function ListDocumentos() {
   };
 
   if (loading) {
-    return <div>Cargando...</div>;
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+          width: "100%",
+          backgroundColor: "rgba(255, 255, 255, 0.7)",
+        }}
+      >
+        <ReactLoading type="spin" color="#00BFFF" height={100} width={100} />
+      </div>
+    );
   }
 
   if (error) {
@@ -107,14 +128,12 @@ export default function ListDocumentos() {
 
   return (
     <div className="flex flex-col items-center pt-6 pb-6">
-      <Titulo name={categoria.nombre}/>
+      <Titulo name={categoria.nombre} />
       <div className="border border-slate-300 mt-6 flex flex-col p-6 w-[80%] items-center gap-4 rounded-md bg-white">
         <div className="w-[100%] flex justify-between">
           <div className="flex flex-col items-start gap-1 pr-24">
             <h2 className="font-bold text-lg">Descripción:</h2>
-            <p>
-              {categoria.descripcion}
-            </p>
+            <p>{categoria.descripcion}</p>
           </div>
           <div>
             <Link
@@ -130,12 +149,10 @@ export default function ListDocumentos() {
             <input
               type="text"
               className="w-[70%] md:w-[40%] border border-slate-500 rounded-md pl-3 pr-3"
-              onChange={ (e)=> buscar(e.target.value)}
+              onChange={(e) => buscar(e.target.value)}
               placeholder="Buscar documento"
             />
-            <button className="bg-emerald-900 text-white px-3 py-1 rounded-md">
-              Buscar
-            </button>
+            <p>Busca los documentos por nombre o semestre.</p>
           </form>
         </div>
         <div className="overflow-x-auto w-[100%] flex justify-center">
@@ -149,16 +166,18 @@ export default function ListDocumentos() {
                 <tr className="bg-cyan-100">
                   <th className="py-2 px-4 border-b w-[40%]">Nombre</th>
                   <th className="py-2 px-4 border-b w-[20%]">Categoría</th>
-                  <th className="py-2 px-4 border-b w-[20%]">Miembros</th>
+                  <th className="py-2 px-4 border-b w-[20%]">Semestre</th>
                   <th className="py-2 px-4 border-b w-[20%]">Ver más</th>
                 </tr>
               </thead>
               <tbody>
-              {temp.map((documento) => (
+                {temp.map((documento) => (
                   <tr className="text-center" key={documento.id}>
-                    <td className="py-2 px-4 border-b text-left">{documento.nombre}</td>
+                    <td className="py-2 px-4 border-b text-left">
+                      {documento.nombre}
+                    </td>
                     <td className="py-2 px-4 border-b">{categoria.nombre}</td>
-                    <td className="py-2 px-4 border-b">{documento.miembros.split("\n").join(", ")}</td>
+                    <td className="py-2 px-4 border-b">{documento.semestre}</td>
                     <td className="py-2 px-4 border-b">
                       <Link
                         to={`/homeAdmin/documento/${documento.id}`}
@@ -177,4 +196,3 @@ export default function ListDocumentos() {
     </div>
   );
 }
-

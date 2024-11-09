@@ -144,6 +144,9 @@ export default function EnviarDocumento() {
                     value={codigousuario}
                     onChange={(e) => setCodigo(e.target.value)}
                     type="text"
+                    inputMode="numeric"
+                    pattern="[0-9]*"
+                    title="Por favor, ingrese solo números en este campo"
                     placeholder="Dígite su código de estudiante"
                     className="w-60 md:w-96 h-full bg-white outline-none border border-slate-400 rounded-md p-1 pl-5 pr-9 text-gray-900"
                   />

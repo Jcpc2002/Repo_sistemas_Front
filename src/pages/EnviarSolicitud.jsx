@@ -7,16 +7,41 @@ function EnviarSolicitud() {
   const [nombre, setNombre] = useState("");
   const [descripcion, setDescripcion] = useState("");
   const [correo, setCorreo] = useState("");
+  const [isValidEmail, setIsValidEmail] = useState(true);
   const [codigousuario, setCodigo] = useState("");
+  const [nombreProyecto, setNombreProyecto] = useState("");
+
+  const handleCorreoChange = (e) => {
+    const value = e.target.value;
+    setCorreo(value);
+
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@ufps\.edu\.co$/;
+    if (emailRegex.test(value) || value === "") {
+      setIsValidEmail(true);
+    } else {
+      setIsValidEmail(false);
+    }
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+
+    if (!isValidEmail) {
+      Swal.fire({
+        icon: "error",
+        title: "Correo inválido",
+        text: "Por favor ingrese un correo institucional válido @ufps.edu.co",
+      });
+      return;
+    }
 
     const body = {
       nombre,
       codigousuario,
       correo,
       descripcion,
+      nombreProyecto,
     };
 
     try {
@@ -89,7 +114,10 @@ function EnviarSolicitud() {
                 value={codigousuario}
                 onChange={(e) => setCodigo(e.target.value)}
                 type="text"
+                inputMode="numeric"
+                pattern="[0-9]*"
                 placeholder="Dígite su código"
+                title="Por favor, ingrese solo números en este campo"
                 className="w-60 md:w-96 h-full bg-white outline-none border border-slate-400 rounded-md p-1 pl-5 pr-9 text-gray-900"
               />
             </div>
@@ -97,12 +125,32 @@ function EnviarSolicitud() {
               <p className="text-lg md:w-[30%]">
                 Dígite su correo institucional:
               </p>
+              <div className="flex flex-col">
+                <input
+                  required
+                  value={correo}
+                  onChange={handleCorreoChange}
+                  type="email"
+                  placeholder="Dígite su correo institucional"
+                  className={`p-2 border w-60 md:w-80 h-full ${
+                    isValidEmail ? "border-slate-400" : "border-red-500"
+                  } rounded-md`}
+                />
+                {!isValidEmail && (
+                  <p className="text-red-500 mt-2">
+                    El correo debe terminar en @ufps.edu.co.
+                  </p>
+                )}
+              </div>
+            </div>
+            <div className="flex flex-col items-center md:flex-row md:w-full md:items-start">
+              <p className="text-lg md:w-[30%]">Dígite el nombre de su proyecto:</p>
               <input
                 required
-                value={correo}
-                onChange={(e) => setCorreo(e.target.value)}
-                type="email"
-                placeholder="Dígite su correo institucional"
+                value={nombreProyecto}
+                onChange={(e) => setNombreProyecto(e.target.value)}
+                type="text"
+                placeholder="Dígite el nombre de su proyecto"
                 className="w-60 md:w-96 h-full bg-white outline-none border border-slate-400 rounded-md p-1 pl-5 pr-9 text-gray-900"
               />
             </div>

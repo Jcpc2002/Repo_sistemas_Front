@@ -15,7 +15,7 @@ export const NavbarHome = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.get("https://reposistemasback-production.up.railway.app/logout", { withCredentials: true });
+      await axios.get("https://backayd-production-d897.up.railway.app/logout", { withCredentials: true });
       navigate("/"); 
     } catch (error) {
       console.error("Error al cerrar sesión:", error);

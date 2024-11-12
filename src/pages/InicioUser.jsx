@@ -14,7 +14,7 @@ function InicioUser() {
 
   const fetchCategorias = async () => {
     try {
-      const response = await fetch("https://reposistemasback-production.up.railway.app/traerCategoria");
+      const response = await fetch("https://backayd-production-d897.up.railway.app/traerCategoria");
       if (response.ok) {
         const data = await response.json();
         setCategorias(data.data); // Guardar las categorías en el estado

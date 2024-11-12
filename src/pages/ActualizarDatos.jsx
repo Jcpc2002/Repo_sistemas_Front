@@ -39,7 +39,7 @@ export default function ActualizarDatos() {
     try {
       if (nombre || correo) {
         const response = await axios.put(
-          "https://reposistemasback-production.up.railway.app/modificarDatos",
+          "https://backayd-production-d897.up.railway.app/modificarDatos",
           data,
           {
             headers: {

@@ -8,7 +8,7 @@ const useAuthCheck = () => {
   useEffect(() => {
     const verifyAuth = async () => {
       try {
-        const response = await fetch("https://reposistemasback-production.up.railway.app/auth/check", {
+        const response = await fetch("https://backayd-production-d897.up.railway.app/auth/check", {
           method: "GET",
           credentials: "include",
         });

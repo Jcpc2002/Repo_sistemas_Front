@@ -75,7 +75,7 @@ export default function EnviarDocumento() {
 
     if (fileLink) {
       try {
-        const response = await axios.put("https://reposistemasback-production.up.railway.app/subirArchivo", {
+        const response = await axios.put("https://backayd-production-d897.up.railway.app/subirArchivo", {
           codigo: codigousuario,
           archivo: fileLink,
         });

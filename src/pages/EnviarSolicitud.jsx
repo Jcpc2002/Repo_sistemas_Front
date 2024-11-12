@@ -46,7 +46,7 @@ function EnviarSolicitud() {
 
     try {
       const response = await axios.post(
-        "https://reposistemasback-production.up.railway.app/enviarSolicitud",
+        "https://backayd-production-d897.up.railway.app/enviarSolicitud",
         body,
         {
           headers: {

@@ -11,7 +11,7 @@ function SolicitudesAceptadas() {
     const fetchSolicitudes = async () => {
       try {
         const response = await fetch(
-          "https://reposistemasback-production.up.railway.app/traerSolicitudesAceptadas"
+          "https://backayd-production-d897.up.railway.app/traerSolicitudesAceptadas"
         );
         const result = await response.json();
         console.log(result);

@@ -27,7 +27,7 @@ function NuevaContra() {
 
     try {
       const response = await axios.put(
-        "https://reposistemasback-production.up.railway.app/editarContrasena",
+        "https://backayd-production-d897.up.railway.app/editarContrasena",
         {
           codigo,
           contrasena,

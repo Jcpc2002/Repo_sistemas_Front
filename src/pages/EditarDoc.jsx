@@ -14,20 +14,20 @@ const SCOPES = "https://www.googleapis.com/auth/drive.file";
 const DRIVE_FOLDER_ID = "1L251mP-XeIuyK4Bf1tkd0T72n_8kGj51"; // Reemplaza con el ID de la carpeta de destino en Google Drive
 
 export default function editarDocumento() {
-
-  const location = useLocation(); 
+  const location = useLocation();
   const { nombre, descripcion, miembros, semestre } = location.state || {};
 
   const [categorias, setCategorias] = useState([]);
   const [isOn, setIsOn] = useState(false);
   const [fileNames, setFileNames] = useState([]);
-  const [inputValue, setInputValue] = useState(semestre ||"");
+  const [inputValue, setInputValue] = useState(semestre || "");
   const [isValid, setIsValid] = useState(true);
   const [fileLinks, setFileLinks] = useState([]);
   const [accessToken, setAccessToken] = useState(null);
-  const [input1, setInput1] = useState(nombre ||"");
-  const [input3, setInput3] = useState(descripcion ||"");
-  const [input4, setInput4] = useState(miembros||"");
+  const [input1, setInput1] = useState(nombre || "");
+  const [input3, setInput3] = useState(descripcion || "");
+  const [input4, setInput4] = useState(miembros || "");
+  const [selectedCategoryName, setSelectedCategoryName] = useState("");
   const { id } = useParams();
 
   const handleChange = (e) => {
@@ -37,8 +37,8 @@ export default function editarDocumento() {
     const regex = /^20\d{2}-[12]$/;
     const currentYear = new Date().getFullYear();
     const inputYear = parseInt(value.slice(0, 4), 10);
-    
-    if (regex.test(value) && inputYear <= currentYear || value === "") {
+
+    if ((regex.test(value) && inputYear <= currentYear) || value === "") {
       setIsValid(true);
     } else {
       setIsValid(false);
@@ -60,6 +60,12 @@ export default function editarDocumento() {
     setInput4(value);
   };
 
+  const handleCategoryChange = (e) => {
+    const selectedIndex = e.target.selectedIndex;
+    const selectedName = e.target.options[selectedIndex].text;
+    setSelectedCategoryName(selectedName);
+  };
+
   useEffect(() => {
     fetchCategorias();
   }, []);
@@ -67,7 +73,7 @@ export default function editarDocumento() {
   const fetchCategorias = async () => {
     try {
       const response = await fetch(
-        "https://reposistemasback-production.up.railway.app/traerCategoria"
+        "https://backayd-production-d897.up.railway.app/traerCategoria"
       );
       if (response.ok) {
         const data = await response.json();
@@ -169,10 +175,13 @@ export default function editarDocumento() {
     );
     setFileLinks(fileLinks);
 
+    const categoriaNombre = selectedCategoryName === "Seleccione una categoría" ? "" : selectedCategoryName;
+
     const formData = {
       id,
       nombre: event.target.nombre.value,
       tipodocumento: event.target.tipodocumento.value,
+      categoriaNombre,
       descripcion: event.target.descripcion.value,
       miembros: event.target.miembros.value,
       archivos: fileLinks,
@@ -184,7 +193,7 @@ export default function editarDocumento() {
 
     try {
       const response = await fetch(
-        "https://reposistemasback-production.up.railway.app/editarDocumento",
+        "https://backayd-production-d897.up.railway.app/editarDocumento",
         {
           method: "PUT",
           headers: {
@@ -201,10 +210,6 @@ export default function editarDocumento() {
           icon: "success",
           title: "Documento editado con éxito",
         });
-        setInput1("");
-        setInputValue("");
-        setInput3("");
-        setInput4("");
       } else {
         console.error("Error al insertar el documento:", data.message);
       }
@@ -241,7 +246,6 @@ export default function editarDocumento() {
                 <input
                   value={input1}
                   onChange={handleChange1}
-                  
                   type="text"
                   name="nombre"
                   className="w-60 md:w-80 h-full bg-white outline-none border border-slate-400 rounded-md p-1 pl-5 pr-9 text-gray-900"
@@ -252,7 +256,6 @@ export default function editarDocumento() {
               <p className="text-lg md:w-[30%]">Semestre:</p>
               <div className="flex flex-col">
                 <input
-                  
                   type="text"
                   name="semestre"
                   value={inputValue}
@@ -270,16 +273,22 @@ export default function editarDocumento() {
               </div>
             </div>
             <div className="flex flex-col items-center md:flex-row md:w-full md:items-start">
-              <p className="text-lg md:w-[30%]">Tipo de documento:</p>
+              <p className="text-lg md:w-[30%]">Categoría:</p>
               <div>
                 <select
-                  
+                  id="tipodocumento"
                   name="tipodocumento"
                   className="w-60 md:w-80 h-full bg-white outline-none border border-slate-400 rounded-md p-2 pl-5 pr-9 text-gray-500"
+                  onChange={(e) => {
+                    handleCategoryChange(e);
+                  }}
                 >
-                  <option value="">Seleccionar una opción</option>
+                   <option value="">Seleccione una categoría</option> {/* Opción predeterminada */}
                   {categorias.map((categoria) => (
-                    <option key={categoria.id} value={categoria.id}>
+                    <option 
+                      key={categoria.id} 
+                      value={categoria.id}
+                    >
                       {categoria.nombre}
                     </option>
                   ))}
@@ -292,7 +301,6 @@ export default function editarDocumento() {
                 <textarea
                   value={input3}
                   onChange={handleChange3}
-                  
                   name="descripcion"
                   className="w-60 md:w-80 h-40 bg-white outline-none border border-slate-400 rounded-md p-2 pl-5 pr-9 text-gray-900"
                 ></textarea>
@@ -304,7 +312,6 @@ export default function editarDocumento() {
                 <textarea
                   value={input4}
                   onChange={handleChange4}
-                  
                   type="text"
                   name="miembros"
                   className="resize-none w-60 md:w-80 border border-slate-400 rounded-md h-20 pl-2 pr-2 text-sm pt-2"
@@ -337,7 +344,9 @@ export default function editarDocumento() {
               </div>
             </div>
             <div className="flex flex-col items-center md:flex-row md:w-full md:items-start">
-              <p className="text-lg md:w-[30%]">Habilitar/Desahibilitar vista de archivos:</p>
+              <p className="text-lg md:w-[30%]">
+                Habilitar/Desahibilitar vista de archivos:
+              </p>
               <div>
                 <div
                   onClick={toggleSwitch}
@@ -361,10 +370,11 @@ export default function editarDocumento() {
               >
                 Autenticarse con Google
               </button>
-              
+
               <button
                 type="submit"
                 className="bg-green-900 text-white px-4 py-2 rounded-md"
+                disabled={!isValid}
               >
                 Enviar
               </button>

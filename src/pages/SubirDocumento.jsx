@@ -33,7 +33,7 @@ export default function SubirDocumento() {
     const currentYear = new Date().getFullYear();
     const inputYear = parseInt(value.slice(0, 4), 10);
 
-    if (regex.test(value) && inputYear <= currentYear || value === "") {
+    if ((regex.test(value) && inputYear <= currentYear) || value === "") {
       setIsValid(true);
     } else {
       setIsValid(false);
@@ -67,7 +67,9 @@ export default function SubirDocumento() {
 
   const fetchCategorias = async () => {
     try {
-      const response = await fetch("https://reposistemasback-production.up.railway.app/traerCategoria");
+      const response = await fetch(
+        "https://backayd-production-d897.up.railway.app/traerCategoria"
+      );
       if (response.ok) {
         const data = await response.json();
         setCategorias(data.data);
@@ -138,6 +140,23 @@ export default function SubirDocumento() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    if (fileNames.length === 0) {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Por favor, selecciona un archivo antes de enviar.",
+      });
+      return;
+    }
+
+    if (selectedCategoryName === "" || selectedCategoryName === "Selecciona una categoría") {
+      Swal.fire({
+        icon: "error",
+        title: "Por favor, selecciona una categoría válida.",
+      });
+      return;
+    }
+
     if (!accessToken) {
       Swal.fire({
         icon: "error",
@@ -172,13 +191,16 @@ export default function SubirDocumento() {
     console.log(formData);
 
     try {
-      const response = await fetch("https://reposistemasback-production.up.railway.app/insertarDocumento", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        "https://backayd-production-d897.up.railway.app/insertarDocumento",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       const data = await response.json();
       if (response.ok) {
@@ -192,6 +214,7 @@ export default function SubirDocumento() {
         setInput3("");
         setInput4("");
         setFileNames([]);
+        setSelectedCategoryName("Selecciona una categoría");
         if (fileInputRef.current) {
           fileInputRef.current.value = "";
         }
@@ -204,14 +227,14 @@ export default function SubirDocumento() {
 
     try {
       const response = await fetch(
-        "https://reposistemasback-production.up.railway.app/cantidadDeDocumentos"
+        "https://backayd-production-d897.up.railway.app/cantidadDeDocumentos"
       );
       if (response.ok) {
         const data = await response.json();
         console.log(data);
         localStorage.setItem("NumDocs", data.documentos);
       } else {
-        console.error("Error al obtener las categorías:", response.statusText);
+        console.error("Error al traer el Numdocumentos:", response.statusText);
       }
     } catch (error) {
       console.error("Error de red:", error);
@@ -310,6 +333,7 @@ export default function SubirDocumento() {
                     handleCategoryChange(e);
                   }}
                 >
+                  <option value="" disabled selected>Selecciona una categoría</option>
                   {categorias.map((categoria) => (
                     <option
                       key={categoria.id}
@@ -334,7 +358,9 @@ export default function SubirDocumento() {
               </div>
             </div>
             <div className="flex flex-col items-center md:flex-row md:w-full md:items-start">
-              <p className="text-lg pb-2 md:w-[30%]">Habilitar/Desahibilitar vista de archivos:</p>
+              <p className="text-lg pb-2 md:w-[30%]">
+                Habilitar/Desahibilitar vista de archivos:
+              </p>
               <div
                 className={`relative inline-flex h-8 w-16 cursor-pointer rounded-full items-center transition-colors duration-300 ease-in-out ${
                   isOn ? "bg-violet-950" : "bg-gray-300"
@@ -357,11 +383,16 @@ export default function SubirDocumento() {
                 Subir
               </button>
               {!isValid && (
-                <p style={{ color: "red" }}>El formato del semestre es incorrecto.</p>
+                <p style={{ color: "red" }}>
+                  El formato del semestre es incorrecto.
+                </p>
               )}
             </div>
           </form>
-          <p>Debes autenticarte con Google para poder subir el archivo al documento.</p>
+          <p>
+            Debes autenticarte con Google para poder subir el archivo al
+            documento.
+          </p>
           <button
             onClick={() => login()}
             className="mt-6 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700"
